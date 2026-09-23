@@ -1,11 +1,10 @@
-Kelompok Git
+# Tugas Kelompok Git
 
-Repository kolaborasi tim pengembang perangkat lunak
+Repository kolaborasi tim pengembang perangkat lunak.
 
-Anggota
+## Anggota
 
-Aditya Putra Abdillah
--PM Muhammad Zidan Rizqi Pratama
--Frontend Hanaya Chika Rahmadhani
--UI/UX Faras Arrobi Albyan
--Backend Rayzan Harya Rizky
+- PM: Muhammad Zidan Rizqi Pratama
+- Front-End: Hanaya Chika Rahmadhani
+- UI/UX: Faras Arrobi Albyan
+- Back-End: Rayzan Harya Rizky
