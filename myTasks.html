@@ -10,6 +10,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/src/output.css" />
+    <script>
+      if (localStorage.getItem("taskMLoggedIn") !== "true") {
+        window.location.replace("login.html");
+      }
+    </script>
     <title>My Tasks</title>
   </head>
   <body class="flex">
@@ -17,29 +22,29 @@
       class="fixed left-0 top-0 z-50 h-screen w-72 border-r-2 border-gray-300 bg-white"
     >
       <div class="flex items-center justify-center gap-2 p-13">
-        <img src="/src/img/check.png" class="w-15" />
+        <img src="src/img/check.png" class="w-15" />
         <h1 class="text-2xl font-bold font-['Inter']">Task-M</h1>
       </div>
 
       <div class="ml-8 w-40">
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/dashboard.png" class="w-8" />
+        <a href="dashboard.html" class="flex gap-7 pb-7">
+          <img src="src/img/dashboard.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Dashboard</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/mytasks.png" class="w-8" />
+        <a href="myTasks.html" class="flex gap-7 pb-7">
+          <img src="src/img/mytasks.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">My Tasks</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/today.png" class="w-8" />
+        <a href="today.html" class="flex gap-7 pb-7">
+          <img src="src/img/today.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Today</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/upcoming.png" class="w-8" />
+        <a href="upComing.html" class="flex gap-7 pb-7">
+          <img src="src/img/upcoming.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Upcoming</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/completed.png" class="w-8" />
+        <a href="completed.html" class="flex gap-7 pb-7">
+          <img src="src/img/completed.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Completed</p>
         </a>
       </div>
@@ -48,11 +53,11 @@
 
       <div class="ml-8 w-40">
         <a href="#" class="flex gap-7 pb-7 pt-7">
-          <img src="/src/img/settings.png" class="w-8" />
+          <img src="src/img/settings.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Settings</p>
         </a>
         <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/help.png" class="w-8" />
+          <img src="src/img/help.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Help</p>
         </a>
       </div>
@@ -63,22 +68,52 @@
     <section class="ml-72 font-['Inter']">
       <div class="fixed left-72 bg-white mx-1">
         <div class="flex items-center justify-between p-13 mx-13 gap-10 ml-119">
-          <img src="/src/img/search.png" class="absolute w-5 mx-4" />
+          <img src="src/img/search.png" class="absolute w-5 mx-4" />
           <input
             type="text"
             placeholder="Search Tasks..."
             class="border-3 border-gray-300 outline-none p-2 rounded-xl w-74 px-11 font-['Inter']"
           />
           <a href="#" class="w-7">
-            <img src="/src/img/notification.png" />
+            <img src="src/img/notification.png" />
           </a>
 
-          <div class="flex justify-between items-center gap-5 font-['Inter']">
-            <img src="/src/img/profile.png" class="w-7" />
+          <div class="relative flex items-center gap-5 font-['Inter']">
+            <img src="src/img/profile.png" class="w-7" />
             <p class="">Faras Arrobi</p>
-            <a href="#">
-              <img src="/src/img/down-arrow.png" class="w-5" />
-            </a>
+            <button
+              id="profile-menu-button"
+              type="button"
+              aria-expanded="false"
+              aria-controls="profile-menu"
+              class="flex items-center"
+            >
+              <img src="src/img/down-arrow.png" class="w-5" />
+            </button>
+
+            <div
+              id="profile-menu"
+              hidden
+              class="absolute right-0 top-full z-10 mt-3 w-56 rounded-lg border border-gray-200 bg-white p-3 shadow-lg"
+            >
+              <a
+                href="#"
+                class="flex items-center gap-3 rounded-md px-3 py-3 text-base hover:bg-gray-50"
+              >
+                <img src="src/img/settings.png" class="h-6 w-6" />
+                <span>Settings</span>
+              </a>
+              <button
+                id="logout-button"
+                type="button"
+                class="flex w-full items-center gap-3 rounded-md px-3 py-3 text-left text-base text-red-600 hover:bg-red-50"
+              >
+                <span aria-hidden="true" class="text-2xl leading-none"
+                  >&#8618;</span
+                >
+                <span>Logout</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -88,44 +123,136 @@
         </div>
 
         <div class="flex gap-5 mx-13 items-center py-5">
-          <img src="/src/img/search.png" class="absolute w-5 mx-4" />
+          <img src="src/img/search.png" class="absolute w-5 mx-4" />
           <input
+            id="task-list-search"
             type="text"
             placeholder="Search Tasks..."
             class="border-3 border-gray-300 outline-none p-1.5 rounded-xl w-169 px-11"
           />
 
-          <div
-            class="flex border-3 border-gray-300 outline-none p-1.5 rounded-xl w-32 gap-3 font-bold px-2"
-          >
-            <img src="/src/img/filter.png" class="w-6 h-6" />
-            <p>Filter</p>
-            <a href="#">
-              <img src="/src/img/down-arrow.png" class="w-5 h-5 mt-1" />
-            </a>
+          <div class="relative">
+            <button
+              id="filter-button"
+              type="button"
+              aria-expanded="false"
+              class="flex w-32 gap-3 rounded-xl border-3 border-gray-300 p-1.5 px-2 font-bold"
+            >
+              <img src="src/img/filter.png" class="h-6 w-6" alt="" />
+              <span id="filter-label">Filter</span>
+              <img src="src/img/down-arrow.png" class="mt-1 h-5 w-5" alt="" />
+            </button>
+            <div
+              id="filter-menu"
+              hidden
+              class="absolute left-0 top-full z-20 mt-2 w-40 rounded-lg border border-gray-200 bg-white p-2 shadow-lg"
+            >
+              <button
+                type="button"
+                data-category-filter="All"
+                class="block w-full rounded-md px-3 py-2 text-left hover:bg-gray-100"
+              >
+                All
+              </button>
+              <button
+                type="button"
+                data-category-filter="Work"
+                class="block w-full rounded-md px-3 py-2 text-left hover:bg-gray-100"
+              >
+                Work
+              </button>
+              <button
+                type="button"
+                data-category-filter="Study"
+                class="block w-full rounded-md px-3 py-2 text-left hover:bg-gray-100"
+              >
+                Study
+              </button>
+              <button
+                type="button"
+                data-category-filter="Personal"
+                class="block w-full rounded-md px-3 py-2 text-left hover:bg-gray-100"
+              >
+                Personal
+              </button>
+              <button
+                type="button"
+                data-category-filter="Other"
+                class="block w-full rounded-md px-3 py-2 text-left hover:bg-gray-100"
+              >
+                Other
+              </button>
+            </div>
           </div>
 
-          <div
-            class="flex border-3 border-gray-300 outline-none p-1.5 rounded-xl w-32 gap-3 font-bold px-2"
-          >
-            <img src="/src/img/sort.png" class="w-6 h-6" />
-            <p>Sort</p>
-            <a href="#">
-              <img src="/src/img/down-arrow.png" class="w-5 h-5 mt-1" />
-            </a>
+          <div class="relative">
+            <button
+              id="sort-button"
+              type="button"
+              aria-expanded="false"
+              class="flex w-32 gap-3 rounded-xl border-3 border-gray-300 p-1.5 px-2 font-bold"
+            >
+              <img src="src/img/sort.png" class="h-6 w-6" alt="" />
+              <span id="sort-label">Sort</span>
+              <img src="src/img/down-arrow.png" class="mt-1 h-5 w-5" alt="" />
+            </button>
+            <div
+              id="sort-menu"
+              hidden
+              class="absolute left-0 top-full z-20 mt-2 w-44 rounded-lg border border-gray-200 bg-white p-2 shadow-lg"
+            >
+              <button
+                type="button"
+                data-sort="default"
+                class="block w-full rounded-md px-3 py-2 text-left hover:bg-gray-100"
+              >
+                Default
+              </button>
+              <button
+                type="button"
+                data-sort="az"
+                class="block w-full rounded-md px-3 py-2 text-left hover:bg-gray-100"
+              >
+                A - Z
+              </button>
+              <button
+                type="button"
+                data-sort="za"
+                class="block w-full rounded-md px-3 py-2 text-left hover:bg-gray-100"
+              >
+                Z - A
+              </button>
+              <button
+                type="button"
+                data-sort="deadline-asc"
+                class="block w-full rounded-md px-3 py-2 text-left hover:bg-gray-100"
+              >
+                Deadline terdekat
+              </button>
+              <button
+                type="button"
+                data-sort="deadline-desc"
+                class="block w-full rounded-md px-3 py-2 text-left hover:bg-gray-100"
+              >
+                Deadline terjauh
+              </button>
+            </div>
           </div>
 
           <a href="#" class="bg-[#125FDD] text-white flex gap-3 p-2 rounded-xl">
-            <img src="/src/img/add.png" class="w-5 h-5" />
+            <img src="src/img/add.png" class="w-5 h-5" />
             <p>Add Task</p>
-          </a>  
+          </a>
         </div>
       </div>
 
       <div class="pt-75 pb-10">
-        <div class="border-5 rounded-xl font-['Inter'] mx-13 w-280  border-gray-300">
+        <div
+          id="tasks-table"
+          class="border-5 rounded-xl font-['Inter'] mx-13 w-280 border-gray-300"
+        >
           <div class="flex gap-5 p-3 bg-gray-100 rounded-xl font-bold">
-            <img src="/src/img/checkbox.png" class="w-6 h-6 ml-3" />
+            <img src="src/img/checkbox.png" class="w-6 h-6 ml-3" alt="" />
             <p class="mr-55">Task</p>
             <p class="mr-15">Category</p>
             <p class="mr-18">Due Date</p>
@@ -133,215 +260,329 @@
             <p class="mr-5">Created On</p>
             <p>Actions</p>
           </div>
-
-          <div class="w-278 border-1 border-gray-300 mx-auto"></div>
-
-          <a href="#" class="flex gap-5 py-6">
-            <img src="/src/img/checkbox.png" class="w-6 h-6 mt-4 ml-6" />
-            <div class="w-60">
-              <p class="font-bold">Design F-Task UI</p>
-              <p class="text-xs">
-                Create the user interface for the desktop app using Figma.
-              </p>
-            </div>
-            <div class="text-[#2C6BF7] font-bold bg-[#E8F1FE] rounded-lg items-center h-full ml-2">
-              <p class="p-1 px-5">School</p>
-            </div>
-            <div class="flex gap-3">
-              <img src="/src/img/calendar.png" class="w-6 h-6 ml-3" />
-              <div>
-                <p>22 Aug 2026</p>
-                <p class="text-red-500 pt-1">Today</p>
-              </div>
-            </div>
-            <div class="text-[#2C6BF7] font-bold bg-[#E8F1FE] rounded-lg items-center h-full ml-2">
-              <p class="p-1 px-5">In Progress</p>
-            </div>
-            <div class="flex gap-3 mr-2">
-              <img src="/src/img/calendar.png" class="w-6 h-6 ml-3" />
-              <div class="">
-                <p>22 Aug 2026</p>
-                <p class="pt-1">10.30 AM</p>
-              </div>
-            </div>
-            <img src="/src/img/actions1.png" class="w-6 h-6" />
-            <img src="/src/img/actions2.png" class="w-6 h-6" />
-          </a>
-
-          <div class="w-278 border-1 border-gray-300 mx-auto"></div>
-
-          <div class="flex gap-5 py-6">
-            <img src="/src/img/checkbox.png" class="w-6 h-6 mt-4 ml-6" />
-            <div class="w-60">
-              <p class="font-bold">Create REST API</p>
-              <p class="text-xs">
-                Build the REST API for task management using Express.js.
-              </p>
-            </div>
-            <div class="text-[#2C6BF7] font-bold bg-[#E8F1FE] rounded-lg items-center h-full ml-2">
-              <p class="p-1 px-5">School</p>
-            </div>
-            <div class="flex gap-3">
-              <img src="/src/img/calendar.png" class="w-6 h-6 ml-3" />
-              <div>
-                <p>23 Aug 2026</p>
-                <p class="text-orange-500 pt-1">Tomorrow</p>
-              </div>
-            </div>
-            <div class="text-[#29405C] font-bold bg-gray-200 rounded-lg items-center h-full ml-2">
-              <p class="p-1 px-5">To Do</p>
-            </div>
-            <div class="flex gap-3 mr-2 ml-11">
-              <img src="/src/img/calendar.png" class="w-6 h-6 ml-3" />
-              <div class="">
-                <p>20 Aug 2026</p>
-                <p class="pt-1">02.15 PM</p>
-              </div>
-            </div>
-            <img src="/src/img/actions1.png" class="w-6 h-6" />
-            <img src="/src/img/actions2.png" class="w-6 h-6" />
-          </div>
-
-          <div class="w-278 border-1 border-gray-300 mx-auto"></div>
-
-          <div class="flex gap-5 py-6">
-            <img src="/src/img/checkbox.png" class="w-6 h-6 mt-4 ml-6" />
-            <div class="w-60">
-              <p class="font-bold">Workout</p>
-              <p class="text-xs">Do 30 minutes workout.</p>
-            </div>
-            <div class="text-[#5335C8] font-bold bg-[#DBD4F6] rounded-lg items-center h-full ml-1">
-              <p class="p-1 px-5">Personal</p>
-            </div>
-            <div class="flex gap-3">
-              <img src="/src/img/calendar.png" class="w-6 h-6" />
-              <div>
-                <p>26 Aug 2026</p>
-                <p class="text-orange-500 pt-1">4 days left</p>
-              </div>
-            </div>
-            <div class="text-[#29405C] font-bold bg-gray-200 rounded-lg items-center h-full ml-2">
-              <p class="p-1 px-5">To Do</p>
-            </div>
-            <div class="flex gap-3 mr-2 ml-11">
-              <img src="/src/img/calendar.png" class="w-6 h-6 ml-3" />
-              <div class="">
-                <p>22 Aug 2026</p>
-                <p class="pt-1">07.10 AM</p>
-              </div>
-            </div>
-            <img src="/src/img/actions1.png" class="w-6 h-6" />
-            <img src="/src/img/actions2.png" class="w-6 h-6" />
-          </div>
-
-          <div class="w-278 border-1 border-gray-300 mx-auto"></div>
-
-          <div class="flex gap-5 py-6">
-            <img src="/src/img/optionscompleted2.png" class="w-6 h-6 mt-4 ml-6"/>
-            <div class="w-60">
-              <p class="font-bold">Reading A Book</p>
-              <p class="text-xs">Read at least 20 pages.</p>
-            </div>
-            <div class="text-[#5335C8] font-bold bg-[#DBD4F6] rounded-lg items-center h-full ml-1">
-              <p class="p-1 px-5">Personal</p>
-            </div>
-            <div class="flex gap-3">
-              <img src="/src/img/calendar.png" class="w-6 h-6" />
-              <div>
-                <p>21 Aug 2026</p>
-                <p class="text-green-500 pt-1">Completed</p>
-              </div>
-            </div>
-            <div class="text-[#097F34] font-bold bg-[#DCF5EA] rounded-lg items-center h-full ml-3">
-              <p class="p-1 px-5">Completed</p>
-            </div>
-            <div class="flex gap-3 mr-2">
-              <img src="/src/img/calendar.png" class="w-6 h-6 ml-3" />
-              <div>
-                <p>17 Aug 2026</p>
-                <p class="pt-1">08.30 AM</p>
-              </div>
-            </div>
-            <img src="/src/img/actions1.png" class="w-6 h-6" />
-            <img src="/src/img/actions2.png" class="w-6 h-6" />
-          </div>
-
-          <div class="w-278 border-1 border-gray-300 mx-auto"></div>
-
-          <div class="flex gap-5 py-6">
-            <img src="/src/img/checkbox.png" class="w-6 h-6 mt-4 ml-6" />
-            <div class="w-60">
-              <p class="font-bold">Submit Assignment</p>
-              <p class="text-xs">Submit programming assignment.</p>
-            </div>
-            <div class="text-[#2C6BF7] font-bold bg-[#E8F1FE] rounded-lg items-center h-full ml-2">
-              <p class="p-1 px-5">School</p>
-            </div>
-            <div class="flex gap-3">
-              <img src="/src/img/calendar.png" class="w-6 h-6 ml-3" />
-              <div>
-                <p>25 Aug 2026</p>
-                <p class="text-green-500 pt-1">3 days left</p>
-              </div>
-            </div>
-            <div class="text-[#29405C] font-bold bg-gray-200 rounded-lg items-center h-full ml-2">
-              <p class="p-1 px-5">To Do</p>
-            </div>
-            <div class="flex gap-3 mr-2 ml-14">
-              <img src="/src/img/calendar.png" class="w-6 h-6" />
-              <div>
-                <p>2 Aug 2026</p>
-                <p class="pt-1">07.10 AM</p>
-              </div>
-            </div>
-            <img src="/src/img/actions1.png" class="w-6 h-6" />
-            <img src="/src/img/actions2.png" class="w-6 h-6" />
-          </div>
-
-          <div class="w-278 border-1 border-gray-300 mx-auto"></div>
-
-          <div class="flex gap-5 py-6">
-            <img src="/src/img/checkbox.png" class="w-6 h-6 mt-4 ml-6" />
-            <div class="w-60">
-              <p class="font-bold">Making A Database</p>
-              <p class="text-xs">Design and creat databse for F-Task.</p>
-            </div>
-
-            <div
-              class="text-[#2C6BF7] font-bold bg-[#E8F1FE] rounded-lg items-center h-full ml-2"
-            >
-              <p class="p-1 px-5">School</p>
-            </div>
-
-            <div class="flex gap-3">
-              <img src="/src/img/calendar.png" class="w-6 h-6 ml-3" />
-              <div class="">
-                <p>20 Aug 2026</p>
-                <p class="text-red-500 pt-1">Overdue</p>
-              </div>
-            </div>
-
-            <div
-              class="text-[#2C6BF7] font-bold bg-[#E8F1FE] rounded-lg    items-center h-full ml-2"
-            >
-              <p class="p-1 px-5">In Progress</p>
-            </div>
-
-            <div class="flex gap-3 mr-2">
-              <img src="/src/img/calendar.png" class="w-6 h-6 ml-3" />
-              <div class="">
-                <p>18 Aug 2026</p>
-                <p class="pt-1">11.45 AM</p>
-              </div>
-            </div>
-
-            <img src="/src/img/actions1.png" class="w-6 h-6" />
-            <img src="/src/img/actions2.png" class="w-6 h-6" />
-          </div>
-
-          <div class="w-278 border-1 border-gray-300 mx-auto"></div>
+          <div id="task-rows"></div>
+          <p id="empty-tasks" class="hidden p-12 text-center text-gray-500">
+            No tasks found.
+          </p>
         </div>
       </div>
     </section>
+    <script>
+      const savedTasksKey = "taskMTasks";
+      const taskRows = document.getElementById("task-rows");
+      const emptyTasks = document.getElementById("empty-tasks");
+      const taskListSearch = document.getElementById("task-list-search");
+      const filterButton = document.getElementById("filter-button");
+      const filterLabel = document.getElementById("filter-label");
+      const filterMenu = document.getElementById("filter-menu");
+      const sortButton = document.getElementById("sort-button");
+      const sortLabel = document.getElementById("sort-label");
+      const sortMenu = document.getElementById("sort-menu");
+      let selectedCategory = "All";
+      let selectedSort = "default";
+
+      const getSavedTasks = () => {
+        try {
+          return JSON.parse(localStorage.getItem(savedTasksKey)) || [];
+        } catch {
+          return [];
+        }
+      };
+
+      const formatDate = (dateValue) => {
+        if (!dateValue) return "No due date";
+        return new Date(`${dateValue}T00:00:00`).toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        });
+      };
+
+      const getDueLabel = (dateValue, completed) => {
+        if (completed) return { text: "Completed", color: "text-green-500" };
+        if (!dateValue) return { text: "No due date", color: "text-gray-500" };
+        const days = Math.ceil(
+          (new Date(`${dateValue}T00:00:00`) - new Date()) / 86400000,
+        );
+        if (days < 0) return { text: "Overdue", color: "text-red-500" };
+        if (days === 0) return { text: "Today", color: "text-red-500" };
+        if (days === 1) return { text: "Tomorrow", color: "text-orange-500" };
+        return { text: `${days} days left`, color: "text-orange-500" };
+      };
+
+      const createTaskRow = (task, taskIndex) => {
+        const row = document.createElement("div");
+        row.className = "flex items-center gap-5 py-6";
+        row.dataset.taskText =
+          `${task.title} ${task.description} ${task.category}`.toLowerCase();
+
+        const checkButton = document.createElement("button");
+        checkButton.type = "button";
+        checkButton.className = "ml-6 h-6 w-6 shrink-0";
+        checkButton.setAttribute("aria-label", "Mark task as completed");
+        const checkIcon = document.createElement("img");
+        checkIcon.className = "h-6 w-6";
+        checkButton.append(checkIcon);
+
+        const taskDetails = document.createElement("div");
+        taskDetails.className = "w-60 shrink-0";
+        const title = document.createElement("p");
+        title.className = "font-bold";
+        title.textContent = task.title;
+        const description = document.createElement("p");
+        description.className = "text-xs";
+        description.textContent = task.description || "No description";
+        taskDetails.append(title, description);
+
+        const category = document.createElement("p");
+        category.className =
+          "rounded-lg bg-[#E8F1FE] p-1 px-5 font-bold text-[#2C6BF7]";
+        category.textContent = task.category || "General";
+
+        const dueDate = document.createElement("div");
+        dueDate.className = "flex gap-3 w-36";
+        dueDate.innerHTML =
+          '<img src="src/img/calendar.png" class="h-6 w-6" alt="" />';
+        const dueText = document.createElement("div");
+        const date = document.createElement("p");
+        date.textContent = formatDate(task.dueDate);
+        const dueLabel = document.createElement("p");
+        dueLabel.className = getDueLabel(task.dueDate, task.completed).color;
+        dueText.append(date, dueLabel);
+        dueDate.append(dueText);
+
+        const status = document.createElement("p");
+        status.className = "rounded-lg p-1 px-5 font-bold w-32 text-center";
+        const updateStatus = () => {
+          checkIcon.src = task.completed
+            ? "src/img/optionscompleted.png"
+            : "src/img/options.png";
+          status.textContent = task.completed ? "Completed" : "To Do";
+          status.className = task.completed
+            ? "rounded-lg bg-[#DCF5EA] p-1 px-5 font-bold text-[#097F34] w-32 text-center"
+            : "rounded-lg bg-gray-200 p-1 px-5 font-bold text-[#29405C] w-32 text-center";
+          dueLabel.textContent = getDueLabel(task.dueDate, task.completed).text;
+          dueLabel.className = getDueLabel(task.dueDate, task.completed).color;
+        };
+        updateStatus();
+
+        const created = document.createElement("p");
+        created.className = "w-32 text-gray-500";
+        created.textContent = task.createdAt
+          ? formatDate(task.createdAt)
+          : "Recently";
+
+        const actions = document.createElement("div");
+        actions.className = "relative flex items-center gap-3";
+        const detailLink = document.createElement("a");
+        detailLink.href = `detailTasks.html?task=${encodeURIComponent(task.title)}`;
+        detailLink.innerHTML =
+          '<img src="src/img/actions1.png" class="h-6 w-6" alt="View task" />';
+        const moreButton = document.createElement("button");
+        moreButton.type = "button";
+        moreButton.className = "h-6 w-6";
+        moreButton.setAttribute("aria-label", "Open task options");
+        moreButton.innerHTML =
+          '<img src="src/img/actions2.png" class="h-6 w-6" alt="More options" />';
+
+        const actionMenu = document.createElement("div");
+        actionMenu.hidden = true;
+        actionMenu.className =
+          "absolute right-0 top-8 z-10 w-28 rounded-lg border border-gray-200 bg-white p-1 shadow-lg";
+        const deleteButton = document.createElement("button");
+        deleteButton.type = "button";
+        deleteButton.className =
+          "w-full rounded-md px-3 py-2 text-left text-sm text-red-600 hover:bg-red-50";
+        deleteButton.textContent = "Hapus";
+        actionMenu.append(deleteButton);
+        actions.append(detailLink, moreButton, actionMenu);
+
+        moreButton.addEventListener("click", (event) => {
+          event.stopPropagation();
+          document.querySelectorAll("[data-task-menu]").forEach((menu) => {
+            if (menu !== actionMenu) menu.hidden = true;
+          });
+          actionMenu.hidden = !actionMenu.hidden;
+        });
+        actionMenu.dataset.taskMenu = "true";
+
+        checkButton.addEventListener("click", () => {
+          task.completed = !task.completed;
+          const tasks = getSavedTasks();
+          tasks[taskIndex].completed = task.completed;
+          localStorage.setItem(savedTasksKey, JSON.stringify(tasks));
+          updateStatus();
+        });
+        deleteButton.addEventListener("click", async () => {
+          if (!task.id) {
+            return;
+          }
+
+          const response = await fetch(
+            `/api/tasks/${encodeURIComponent(task.id)}`,
+            { method: "DELETE" },
+          );
+          if (!response.ok) {
+            window.alert("Task gagal dihapus dari task.json");
+            return;
+          }
+
+          const tasks = getSavedTasks();
+          const remainingTasks = tasks.filter(
+            (savedTask) => String(savedTask.id) !== String(task.id),
+          );
+          localStorage.setItem(savedTasksKey, JSON.stringify(remainingTasks));
+          renderTasks();
+        });
+
+        row.append(
+          checkButton,
+          taskDetails,
+          category,
+          dueDate,
+          status,
+          created,
+          actions,
+        );
+        return row;
+      };
+
+      const renderTasks = () => {
+        taskRows.replaceChildren();
+        const searchText = taskListSearch.value.trim().toLowerCase();
+        const tasks = getSavedTasks()
+          .map((task, index) => ({ task, index }))
+          .filter(({ task }) => {
+            const taskCategory = (task.category || "Other").toLowerCase();
+            const categoryMatches =
+              selectedCategory === "All"
+                ? true
+                : selectedCategory === "Other"
+                  ? !["work", "study", "personal"].includes(taskCategory)
+                  : taskCategory === selectedCategory.toLowerCase();
+            return (
+              categoryMatches &&
+              `${task.title} ${task.description} ${task.category}`
+                .toLowerCase()
+                .includes(searchText)
+            );
+          });
+
+        tasks.sort(({ task: firstTask }, { task: secondTask }) => {
+          if (selectedSort === "az" || selectedSort === "za") {
+            const result = firstTask.title.localeCompare(secondTask.title);
+            return selectedSort === "az" ? result : -result;
+          }
+          if (
+            selectedSort === "deadline-asc" ||
+            selectedSort === "deadline-desc"
+          ) {
+            const firstDate = firstTask.dueDate
+              ? new Date(`${firstTask.dueDate}T00:00:00`).getTime()
+              : Number.POSITIVE_INFINITY;
+            const secondDate = secondTask.dueDate
+              ? new Date(`${secondTask.dueDate}T00:00:00`).getTime()
+              : Number.POSITIVE_INFINITY;
+            const result = firstDate - secondDate;
+            return selectedSort === "deadline-asc" ? result : -result;
+          }
+          return 0;
+        });
+
+        tasks.forEach(({ task, index }) =>
+          taskRows.append(createTaskRow(task, index)),
+        );
+        emptyTasks.classList.toggle("hidden", taskRows.children.length > 0);
+      };
+
+      taskListSearch.addEventListener("input", renderTasks);
+      filterButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        filterMenu.hidden = !filterMenu.hidden;
+        filterButton.setAttribute("aria-expanded", String(!filterMenu.hidden));
+      });
+
+      filterMenu.addEventListener("click", (event) => {
+        const categoryButton = event.target.closest("[data-category-filter]");
+        if (!categoryButton) return;
+        selectedCategory = categoryButton.dataset.categoryFilter;
+        filterLabel.textContent =
+          selectedCategory === "All" ? "Filter" : selectedCategory;
+        filterMenu.hidden = true;
+        filterButton.setAttribute("aria-expanded", "false");
+        renderTasks();
+      });
+
+      sortButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        sortMenu.hidden = !sortMenu.hidden;
+        sortButton.setAttribute("aria-expanded", String(!sortMenu.hidden));
+      });
+
+      sortMenu.addEventListener("click", (event) => {
+        const sortOption = event.target.closest("[data-sort]");
+        if (!sortOption) return;
+        selectedSort = sortOption.dataset.sort;
+        sortLabel.textContent = sortOption.textContent.trim();
+        sortMenu.hidden = true;
+        sortButton.setAttribute("aria-expanded", "false");
+        renderTasks();
+      });
+
+      renderTasks();
+
+      const profileMenuButton = document.getElementById("profile-menu-button");
+      const profileMenu = document.getElementById("profile-menu");
+      const logoutButton = document.getElementById("logout-button");
+
+      profileMenuButton.addEventListener("click", () => {
+        const isOpen = !profileMenu.hidden;
+        profileMenu.hidden = isOpen;
+        profileMenuButton.setAttribute("aria-expanded", String(!isOpen));
+      });
+
+      document.addEventListener("click", (event) => {
+        if (
+          !filterButton.contains(event.target) &&
+          !filterMenu.contains(event.target)
+        ) {
+          filterMenu.hidden = true;
+          filterButton.setAttribute("aria-expanded", "false");
+        }
+
+        if (
+          !sortButton.contains(event.target) &&
+          !sortMenu.contains(event.target)
+        ) {
+          sortMenu.hidden = true;
+          sortButton.setAttribute("aria-expanded", "false");
+        }
+
+        document.querySelectorAll("[data-task-menu]").forEach((menu) => {
+          if (!menu.parentElement.contains(event.target)) menu.hidden = true;
+        });
+
+        if (
+          !profileMenuButton.contains(event.target) &&
+          !profileMenu.contains(event.target)
+        ) {
+          profileMenu.hidden = true;
+          profileMenuButton.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          profileMenu.hidden = true;
+          profileMenuButton.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      logoutButton.addEventListener("click", () => {
+        localStorage.clear();
+        sessionStorage.clear();
+        window.location.href = "login.html";
+      });
+    </script>
   </body>
 </html>

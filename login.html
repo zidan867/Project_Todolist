@@ -17,7 +17,7 @@
   </head>
   <body class="flex min-h-screen">
     <section class="w-1/2">
-      <img src="/src/img/f-task.png" class="w-full h-screen object-cover" />
+      <img src="src/img/f-task.png" class="w-full h-screen object-cover" />
     </section>
 
     <section class="w-1/2 font-['Inter'] flex flex-col items-center">
@@ -28,65 +28,73 @@
       </div>
 
       <div class="w-full max-w-md mt-10">
-        <div class="mb-7">
-          <label class="block text-base font-bold text-gray-800 mb-2">
-            Email
+        <form
+          action="dashboard.html"
+          method="get"
+          onsubmit="localStorage.setItem('taskMLoggedIn', 'true')"
+        >
+          <div class="mb-7">
+            <label class="block text-base font-bold text-gray-800 mb-2">
+              Email
+            </label>
+
+            <div class="relative">
+              <img
+                src="src/img/mail.png"
+                class="absolute left-4 top-1/2 -translate-y-1/2 w-5"
+              />
+
+              <input
+                type="email"
+                placeholder="Enter your email"
+                class="w-full h-12 pl-12 pr-4 rounded-lg border-2 border-gray-200 outline-none text-sm focus:border-purple-600 focus:ring-1 focus:ring-purple-600"
+              />
+            </div>
+          </div>
+
+          <div class="mb-5">
+            <div class="flex justify-between items-center mb-2">
+              <label class="text-base font-bold text-gray-800">
+                Password
+              </label>
+              <a href="#" class="text-sm text-purple-600 hover:underline">
+                Forgot password?
+              </a>
+            </div>
+            <div class="relative">
+              <img
+                src="src/img/padlock (1).png"
+                class="absolute left-4 top-1/2 -translate-y-1/2 w-5"
+              />
+
+              <input
+                type="password"
+                placeholder="Enter your password"
+                class="w-full h-12 pl-12 pr-12 rounded-lg border-2 border-gray-200 outline-none text-sm focus:border-purple-600 focus:ring-1 focus:ring-purple-600"
+              />
+
+              <button
+                type="button"
+                class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center"
+              >
+                <img src="src/img/visible.png" class="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          <label class="flex items-center gap-3 mb-7 cursor-pointer">
+            <input type="checkbox" class="w-5 h-5 accent-purple-600" />
+
+            <span class="text-base text-gray-700"> Remember me </span>
           </label>
 
-          <div class="relative">
-            <img
-              src="/src/img/mail.png"
-              class="absolute left-4 top-1/2 -translate-y-1/2 w-5"
-            />
-
-            <input
-              type="email"
-              placeholder="Enter your email"
-              class="w-full h-12 pl-12 pr-4 rounded-lg border-2 border-gray-200 outline-none text-sm focus:border-purple-600 focus:ring-1 focus:ring-purple-600"
-            />
-          </div>
-        </div>
-
-        <div class="mb-5">
-          <div class="flex justify-between items-center mb-2">
-            <label class="text-base font-bold text-gray-800"> Password </label>
-            <a href="#" class="text-sm text-purple-600 hover:underline">
-              Forgot password?
-            </a>
-          </div>
-          <div class="relative">
-            <img
-              src="/src/img/padlock (1).png"
-              class="absolute left-4 top-1/2 -translate-y-1/2 w-5"
-            />
-
-            <input
-              type="password"
-              placeholder="Enter your password"
-              class="w-full h-12 pl-12 pr-12 rounded-lg border-2 border-gray-200 outline-none text-sm focus:border-purple-600 focus:ring-1 focus:ring-purple-600"
-            />
-
-            <button
-              type="button"
-              class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center"
-            >
-              <img src="/src/img/visible.png" class="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-
-        <label class="flex items-center gap-3 mb-7 cursor-pointer">
-          <input type="checkbox" class="w-5 h-5 accent-purple-600" />
-
-          <span class="text-base text-gray-700"> Remember me </span>
-        </label>
-
-        <button
-          type="submit"
-          class="w-full h-12 rounded-lg bg-purple-600 text-white text-base hover:bg-purple-700 transition"
-        >
-          Sign In
-        </button>
+          <button
+            type="submit"
+            class="w-full h-12 rounded-lg bg-purple-600 text-white text-base hover:bg-purple-700 transition"
+          >
+            Sign In
+          </button>
+        </form>
 
         <div class="flex items-center gap-4 my-10">
           <div class="flex-1 h-px bg-gray-400"></div>
@@ -100,11 +108,11 @@
           type="button"
           class="w-full h-12 rounded-lg border-2 border-gray-200 flex items-center justify-center gap-4 text-gray-800 font-bold hover:bg-gray-50 transition"
         >
-          <img src="/src/img/google (2).png" class="w-5 h-5" />
+          <img src="src/img/google (2).png" class="w-5 h-5" />
 
           <span> Sign in with Google </span>
         </button>
-        
+
         <p class="text-center text-gray-500 mt-6">
           Don't have an account?
 

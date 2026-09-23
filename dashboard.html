@@ -10,34 +10,39 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/src/output.css" />
+    <script>
+      if (localStorage.getItem("taskMLoggedIn") !== "true") {
+        window.location.replace("login.html");
+      }
+    </script>
     <title>Dashboard</title>
   </head>
   <body class="flex">
-    <section class="w-72  ">
+    <section class="w-72">
       <div class="flex items-center justify-center gap-2 p-13">
-        <img src="/src/img/check.png" class="w-15" />
+        <img src="src/img/check.png" class="w-15" />
         <h1 class="text-2xl font-bold font-['Inter']">Task-M</h1>
       </div>
 
       <div class="ml-8 w-40">
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/dashboard.png" class="w-8" />
+        <a href="dashboard.html" class="flex gap-7 pb-7">
+          <img src="src/img/dashboard.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Dashboard</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/mytasks.png" class="w-8" />
+        <a href="myTasks.html" class="flex gap-7 pb-7">
+          <img src="src/img/mytasks.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">My Tasks</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/today.png" class="w-8" />
+        <a href="today.html" class="flex gap-7 pb-7">
+          <img src="src/img/today.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Today</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/upcoming.png" class="w-8" />
+        <a href="upComing.html" class="flex gap-7 pb-7">
+          <img src="src/img/upcoming.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Upcoming</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/completed.png" class="w-8" />
+        <a href="completed.html" class="flex gap-7 pb-7">
+          <img src="src/img/completed.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Completed</p>
         </a>
       </div>
@@ -46,11 +51,11 @@
 
       <div class="ml-8 w-40">
         <a href="#" class="flex gap-7 pb-7 pt-7">
-          <img src="/src/img/settings.png" class="w-8" />
+          <img src="src/img/settings.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Settings</p>
         </a>
         <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/help.png" class="w-8" />
+          <img src="src/img/help.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Help</p>
         </a>
       </div>
@@ -60,22 +65,53 @@
 
     <section>
       <div class="flex items-center justify-between p-13 ml-130 gap-10">
-        <img src="/src/img/search.png" class="absolute w-5 mx-4" />
+        <img src="src/img/search.png" class="absolute w-5 mx-4" />
         <input
+          id="task-search"
           type="text"
           placeholder="Search Tasks..."
           class="border-3 border-gray-300 outline-none p-2 rounded-xl w-70 px-11 font-['Inter']"
         />
         <a href="#" class="w-7">
-          <img src="/src/img/notification.png" />
+          <img src="src/img/notification.png" />
         </a>
 
-        <div class="flex justify-between items-center gap-5 font-['Inter']">
-          <img src="/src/img/profile.png" class="w-7" />
+        <div class="relative flex items-center gap-5 font-['Inter']">
+          <img src="src/img/profile.png" class="w-7" />
           <p class="">Faras Example</p>
-          <a href="#">
-            <img src="/src/img/down-arrow.png" class="w-5" />
-          </a>
+          <button
+            id="profile-menu-button"
+            type="button"
+            aria-expanded="false"
+            aria-controls="profile-menu"
+            class="flex items-center"
+          >
+            <img src="src/img/down-arrow.png" class="w-5" />
+          </button>
+
+          <div
+            id="profile-menu"
+            hidden
+            class="absolute right-0 top-full z-10 mt-3 w-56 rounded-lg border border-gray-200 bg-white p-3 shadow-lg"
+          >
+            <a
+              href="#"
+              class="flex items-center gap-3 rounded-md px-3 py-3 text-base hover:bg-gray-50"
+            >
+              <img src="src/img/settings.png" class="h-6 w-6" />
+              <span>Settings</span>
+            </a>
+            <button
+              id="logout-button"
+              type="button"
+              class="flex w-full items-center gap-3 rounded-md px-3 py-3 text-left text-base text-red-600 hover:bg-red-50"
+            >
+              <span aria-hidden="true" class="text-2xl leading-none"
+                >&#8618;</span
+              >
+              <span>Logout</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -86,57 +122,391 @@
 
       <div class="flex justify-between items-center font-['Inter'] pt-5 pb-7">
         <h1 class="font-bold mx-13 text-xl pt-5">Recent Tasks</h1>
-        <a href="#" class="bg-[#125FDD] text-white flex gap-3 p-3 rounded-xl mr-13">
-          <img src="/src/img/add.png" class="w-5 h-5">
+        <button
+          id="add-task-button"
+          type="button"
+          class="bg-[#125FDD] text-white flex gap-3 p-3 rounded-xl mr-13"
+        >
           <p>Add Task</p>
-        </a>
+        </button>
       </div>
 
-      <div class="border-5 rounded-xl font-['Inter'] mx-13 border-gray-300 w-280">
-        <a href="#" class="flex gap-5 p-6">
-          <img src="/src/img/options.png" class="w-6 h-6">
-          <p class="font-bold">Design F-Task UI</p>
-          <img src="/src/img/calendar.png" class="w-6 h-6 ml-60">
-          <p class="text-gray-500">22 Aug 2026</p>
-          <p class="text-gray-500 ml-80">Today</p>
-        </a>
-
-        <div class="w-257 border-1 border-gray-300 mx-auto"></div>
-        
-        <div class="flex gap-5 p-6">
-          <img src="/src/img/options.png" class="w-6 h-6">
-          <p class="font-bold">Create REST API</p>
-          <img src="/src/img/calendar.png" class="w-6 h-6 ml-61">
-          <p class="text-gray-500">23 Aug 2026</p>
-          <p class="text-gray-500 ml-72">Tomorrow</p>
-        </div>
-
-        <div class="w-257 border-1 border-gray-300 mx-auto"></div>
-        
-        <div class="flex gap-5 p-6">
-          <img src="/src/img/options.png" class="w-6 h-6">
-          <p class="font-bold">Study English</p>
-          <img src="/src/img/calendar.png" class="w-6 h-6 ml-66">
-          <p class="text-gray-500">24 Aug 2026</p>
-          <p class="text-gray-500 ml-71">2 days left</p>
-        </div>
-
-        <div class="w-257 border-1 border-gray-300 mx-auto"></div>
-        
-        <div class="flex gap-5 p-6">
-          <img src="/src/img/optionscompleted.png" class="w-6 h-6">
-          <p class="font-bold">Create Database</p>
-          <img src="/src/img/calendar.png" class="w-6 h-6 ml-61">
-          <p class="text-gray-500">20 Aug 2026</p>
-          <p class="text-gray-500 ml-74">Completed</p>
-        </div>
-
-        <div class="w-257 border-1 border-gray-300 mx-auto"></div>
-        
+      <div
+        id="recent-tasks-list"
+        class="border-5 rounded-xl font-['Inter'] mx-13 border-gray-300 w-280"
+      >
         <div class="flex gap-5 p-6 text-[#1E58D5] justify-center">
-          <p>View all tasks →</p>
+          <a href="myTasks.html" class="hover:underline">View all tasks →</a>
         </div>
-      </div>  
+      </div>
     </section>
+
+    <div
+      id="add-task-modal"
+      hidden
+      class="fixed inset-0 z-20 flex items-center justify-center p-4 font-['Inter']"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="add-task-title"
+    >
+      <form
+        id="add-task-form"
+        class="relative w-full max-w-xl rounded-2xl bg-white p-6 shadow-2xl sm:p-8"
+      >
+        <button
+          id="close-add-task"
+          type="button"
+          aria-label="Close add task dialog"
+          class="absolute right-6 top-5 text-3xl leading-none text-gray-900 hover:text-gray-500"
+        >
+          &times;
+        </button>
+
+        <h2
+          id="add-task-title"
+          class="pr-10 text-2xl font-bold tracking-tight text-slate-900"
+        >
+          Add New Task
+        </h2>
+
+        <div class="mt-7 space-y-5">
+          <label class="block text-sm font-bold text-slate-900">
+            Title
+            <input
+              id="task-title"
+              name="title"
+              type="text"
+              placeholder="Enter task title...."
+              required
+              class="mt-2 w-full rounded-xl border-2 border-slate-200 px-3 py-3 font-normal outline-none placeholder:text-slate-400 focus:border-[#125FDD]"
+            />
+          </label>
+
+          <label class="block text-sm font-bold text-slate-900">
+            Description (optional)
+            <textarea
+              name="description"
+              rows="3"
+              placeholder="Enter task description...."
+              class="mt-2 w-full resize-none rounded-xl border-2 border-slate-200 px-3 py-3 font-normal outline-none placeholder:text-slate-400 focus:border-[#125FDD]"
+            ></textarea>
+          </label>
+
+          <div class="grid grid-cols-2 gap-5">
+            <label class="block min-w-0 text-sm font-bold text-slate-900">
+              Category
+              <select
+                name="category"
+                class="mt-2 w-full rounded-xl border-2 border-slate-200 bg-white px-3 py-3 font-normal text-slate-500 outline-none focus:border-[#125FDD]"
+              >
+                <option value="">Select category...</option>
+                <option>Work</option>
+                <option>Personal</option>
+                <option>Study</option>
+              </select>
+            </label>
+
+            <label class="block min-w-0 text-sm font-bold text-slate-900">
+              Due Date
+              <input
+                name="dueDate"
+                type="date"
+                class="mt-2 w-full rounded-xl border-2 border-slate-200 px-3 py-3 font-normal text-slate-500 outline-none focus:border-[#125FDD]"
+              />
+            </label>
+          </div>
+
+          <label
+            class="flex items-center gap-2 text-sm font-normal text-slate-900"
+          >
+            <input
+              name="reminder"
+              type="checkbox"
+              class="h-6 w-6 accent-[#125FDD]"
+            />
+            Set reminder (optional)
+          </label>
+        </div>
+
+        <div
+          class="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end sm:gap-4"
+        >
+          <button
+            id="cancel-add-task"
+            type="button"
+            class="w-full rounded-xl border-2 border-slate-200 px-5 py-3 font-medium text-slate-900 transition-colors hover:bg-slate-50 sm:w-42"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="w-full rounded-xl bg-[#125FDD] px-5 py-3 font-medium text-white transition-colors hover:bg-[#0d4fbf] sm:w-42"
+          >
+            Add Task
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const addTaskButton = document.getElementById("add-task-button");
+      const addTaskModal = document.getElementById("add-task-modal");
+      const addTaskForm = document.getElementById("add-task-form");
+      const recentTasksList = document.getElementById("recent-tasks-list");
+      const taskSearch = document.getElementById("task-search");
+      const taskTitle = document.getElementById("task-title");
+      const closeAddTask = document.getElementById("close-add-task");
+      const cancelAddTask = document.getElementById("cancel-add-task");
+      const savedTasksKey = "taskMTasks";
+
+      const showToast = (message, isError = false) => {
+        const toast = document.createElement("div");
+        toast.className = `fixed right-5 top-5 z-50 rounded-xl px-5 py-4 font-medium text-white shadow-lg ${isError ? "bg-red-600" : "bg-green-600"}`;
+        toast.textContent = message;
+        document.body.append(toast);
+        setTimeout(() => toast.remove(), 3000);
+      };
+
+      const getSavedTasks = () => {
+        try {
+          return JSON.parse(localStorage.getItem(savedTasksKey)) || [];
+        } catch {
+          return [];
+        }
+      };
+
+      const formatDueDate = (dueDate) => {
+        if (!dueDate) {
+          return "No due date";
+        }
+
+        return new Date(`${dueDate}T00:00:00`).toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        });
+      };
+
+      const createTaskRow = (task) => {
+        const taskRow = document.createElement("div");
+        taskRow.className = "flex items-center";
+        taskRow.dataset.taskRow = "true";
+        taskRow.dataset.searchText = [
+          task.title,
+          task.description,
+          task.category,
+        ]
+          .join(" ")
+          .toLowerCase();
+
+        const checkButton = document.createElement("button");
+        checkButton.type = "button";
+        checkButton.className = "ml-6 h-6 w-6 shrink-0";
+        checkButton.setAttribute("aria-label", "Mark task as completed");
+        checkButton.setAttribute(
+          "aria-pressed",
+          String(Boolean(task.completed)),
+        );
+
+        const taskLink = document.createElement("a");
+        taskLink.href = `detailTasks.html?task=${encodeURIComponent(task.title)}`;
+        taskLink.className =
+          "flex flex-1 items-center gap-5 p-6 hover:bg-gray-50";
+
+        const taskIcon = document.createElement("img");
+        taskIcon.src = task.completed
+          ? "src/img/optionscompleted.png"
+          : "src/img/options.png";
+        taskIcon.className = "w-6 h-6";
+        checkButton.append(taskIcon);
+
+        const title = document.createElement("p");
+        title.className = "font-bold";
+        title.textContent = task.title;
+
+        const calendarIcon = document.createElement("img");
+        calendarIcon.src = "src/img/calendar.png";
+        calendarIcon.className = "w-6 h-6 ml-auto";
+
+        const date = document.createElement("p");
+        date.className = "text-gray-500";
+        date.textContent = formatDueDate(task.dueDate);
+
+        const status = document.createElement("p");
+        status.className = "text-gray-500 ml-auto";
+        status.textContent = task.completed
+          ? "Completed"
+          : task.dueDate
+            ? "New task"
+            : "No due date";
+
+        taskLink.append(title, calendarIcon, date, status);
+
+        checkButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const savedTasks = getSavedTasks();
+          const taskIndex = savedTasks.findIndex((savedTask) =>
+            task.id ? savedTask.id === task.id : savedTask.title === task.title,
+          );
+
+          task.completed = !task.completed;
+          taskIcon.src = task.completed
+            ? "src/img/optionscompleted.png"
+            : "src/img/options.png";
+          status.textContent = task.completed
+            ? "Completed"
+            : task.dueDate
+              ? "New task"
+              : "No due date";
+          checkButton.setAttribute("aria-pressed", String(task.completed));
+
+          if (taskIndex >= 0) {
+            savedTasks[taskIndex].completed = task.completed;
+            localStorage.setItem(savedTasksKey, JSON.stringify(savedTasks));
+          }
+        });
+
+        taskRow.append(checkButton, taskLink);
+
+        const separator = document.createElement("div");
+        separator.className = "w-257 border-1 border-gray-300 mx-auto";
+        separator.dataset.taskSeparator = "true";
+
+        return { taskRow, separator };
+      };
+
+      const filterTasks = () => {
+        const searchText = taskSearch.value.trim().toLowerCase();
+        recentTasksList.querySelectorAll("[data-task-row]").forEach((row) => {
+          const isMatch = row.dataset.searchText.includes(searchText);
+          row.hidden = !isMatch;
+
+          if (row.nextElementSibling?.dataset.taskSeparator) {
+            row.nextElementSibling.hidden = !isMatch;
+          }
+        });
+      };
+
+      const renderSavedTasks = () => {
+        recentTasksList
+          .querySelectorAll("[data-task-row], [data-task-separator]")
+          .forEach((element) => element.remove());
+
+        getSavedTasks()
+          .slice()
+          .reverse()
+          .slice(0, 5)
+          .forEach((task) => {
+            const row = createTaskRow(task);
+            recentTasksList.prepend(row.separator);
+            recentTasksList.prepend(row.taskRow);
+          });
+      };
+
+      const closeTaskModal = () => {
+        addTaskModal.hidden = true;
+        document.body.classList.remove("overflow-hidden");
+      };
+
+      addTaskButton.addEventListener("click", () => {
+        addTaskModal.hidden = false;
+        document.body.classList.add("overflow-hidden");
+        taskTitle.focus();
+      });
+
+      taskSearch.addEventListener("input", filterTasks);
+
+      closeAddTask.addEventListener("click", closeTaskModal);
+      cancelAddTask.addEventListener("click", closeTaskModal);
+
+      addTaskModal.addEventListener("click", (event) => {
+        if (event.target === addTaskModal) {
+          closeTaskModal();
+        }
+      });
+
+      addTaskForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(addTaskForm);
+        const newTask = {
+          id: `${Date.now()}-${Math.random()}`,
+          title: formData.get("title").trim(),
+          description: formData.get("description").trim(),
+          category: formData.get("category"),
+          dueDate: formData.get("dueDate"),
+          reminder: formData.get("reminder") === "on",
+          completed: false,
+        };
+
+        const submitButton = addTaskForm.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.textContent = "Saving...";
+
+        try {
+          const response = await fetch("/api/tasks", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newTask),
+          });
+
+          if (!response.ok) {
+            throw new Error("Task gagal disimpan ke task.json");
+          }
+
+          const savedTask = await response.json();
+          const savedTasks = getSavedTasks();
+          savedTasks.push(savedTask);
+          localStorage.setItem(savedTasksKey, JSON.stringify(savedTasks));
+
+          renderSavedTasks();
+          filterTasks();
+          closeTaskModal();
+          addTaskForm.reset();
+          showToast("Task berhasil ditambahkan");
+        } catch (error) {
+          showToast(error.message, true);
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent = "Add Task";
+        }
+      });
+
+      renderSavedTasks();
+
+      const profileMenuButton = document.getElementById("profile-menu-button");
+      const profileMenu = document.getElementById("profile-menu");
+      const logoutButton = document.getElementById("logout-button");
+
+      profileMenuButton.addEventListener("click", () => {
+        const isOpen = !profileMenu.hidden;
+        profileMenu.hidden = isOpen;
+        profileMenuButton.setAttribute("aria-expanded", String(!isOpen));
+      });
+
+      document.addEventListener("click", (event) => {
+        if (
+          !profileMenuButton.contains(event.target) &&
+          !profileMenu.contains(event.target)
+        ) {
+          profileMenu.hidden = true;
+          profileMenuButton.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeTaskModal();
+          profileMenu.hidden = true;
+          profileMenuButton.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      logoutButton.addEventListener("click", () => {
+        localStorage.clear();
+        sessionStorage.clear();
+        window.location.href = "login.html";
+      });
+    </script>
   </body>
 </html>

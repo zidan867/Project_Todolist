@@ -1,1 +1,62 @@
 @import "tailwindcss";
+#add-task-modal[hidden] {
+  display: none;
+}
+
+#add-task-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  background: rgb(15 23 42 / 0.35);
+  backdrop-filter: blur(3px);
+}
+
+#add-task-modal form {
+  width: min(100%, 36rem);
+  margin: auto;
+  padding: 2rem;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  border: 1px solid rgb(226 232 240);
+}
+
+#add-task-form h2 {
+  margin-bottom: 2rem;
+}
+
+#add-task-form > div.mt-7 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 0;
+}
+
+#add-task-form > div.mt-7 > .grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#add-task-form label {
+  line-height: 1.25rem;
+}
+
+#add-task-form label > input,
+#add-task-form label > textarea,
+#add-task-form label > select {
+  display: block;
+  margin-top: 0.6rem;
+}
+
+#add-task-form textarea {
+  min-height: 6rem;
+}
+
+#add-task-form > div:last-child {
+  margin-top: 2rem;
+}

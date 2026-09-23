@@ -10,6 +10,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/src/output.css" />
+    <script>
+      if (localStorage.getItem("taskMLoggedIn") !== "true") {
+        window.location.replace("login.html");
+      }
+    </script>
     <title>Today</title>
   </head>
   <body class="flex">
@@ -17,29 +22,29 @@
       class="fixed left-0 top-0 z-50 h-screen w-72 border-r-2 border-gray-300 bg-white"
     >
       <div class="flex items-center justify-center gap-2 p-13">
-        <img src="/src/img/check.png" class="w-15" />
+        <img src="src/img/check.png" class="w-15" />
         <h1 class="text-2xl font-bold font-['Inter']">Task-M</h1>
       </div>
 
       <div class="ml-8 w-40">
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/dashboard.png" class="w-8" />
+        <a href="dashboard.html" class="flex gap-7 pb-7">
+          <img src="src/img/dashboard.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Dashboard</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/mytasks.png" class="w-8" />
+        <a href="myTasks.html" class="flex gap-7 pb-7">
+          <img src="src/img/mytasks.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">My Tasks</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/today.png" class="w-8" />
+        <a href="today.html" class="flex gap-7 pb-7">
+          <img src="src/img/today.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Today</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/upcoming.png" class="w-8" />
+        <a href="upComing.html" class="flex gap-7 pb-7">
+          <img src="src/img/upcoming.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Upcoming</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/completed.png" class="w-8" />
+        <a href="completed.html" class="flex gap-7 pb-7">
+          <img src="src/img/completed.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Completed</p>
         </a>
       </div>
@@ -48,11 +53,11 @@
 
       <div class="ml-8 w-40">
         <a href="#" class="flex gap-7 pb-7 pt-7">
-          <img src="/src/img/settings.png" class="w-8" />
+          <img src="src/img/settings.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Settings</p>
         </a>
         <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/help.png" class="w-8" />
+          <img src="src/img/help.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Help</p>
         </a>
       </div>
@@ -61,23 +66,42 @@
     <div class="h-290 border-2 border-gray-300 ml-72 fixed"></div>
 
     <section class="ml-72 min-w-0 font-['Inter']">
-      <div class="flex items-center justify-between p-13 mx-13 gap-10 ml-120 mr-17">
-        <img src="/src/img/search.png" class="absolute w-5 mx-4" />
+      <div
+        class="flex items-center justify-between p-13 mx-13 gap-10 ml-120 mr-17"
+      >
+        <img src="src/img/search.png" class="absolute w-5 mx-4" />
         <input
           type="text"
           placeholder="Search Tasks..."
           class="border-3 border-gray-300 outline-none p-2 rounded-xl w-74 px-11 font-['Inter']"
         />
         <a href="#" class="w-7">
-          <img src="/src/img/notification.png" />
+          <img src="src/img/notification.png" />
         </a>
 
-        <div class="flex justify-between items-center gap-5 font-['Inter']">
-          <img src="/src/img/profile.png" class="w-7" />
+        <div class="relative flex items-center gap-5 font-['Inter']">
+          <img src="src/img/profile.png" class="w-7" />
           <p class="">Faras Arrobi</p>
-          <a href="#">
-            <img src="/src/img/down-arrow.png" class="w-5" />
-          </a>
+          <button
+            id="profile-menu-button"
+            type="button"
+            aria-expanded="false"
+            aria-controls="profile-menu"
+            class="flex items-center"
+          >
+            <img src="src/img/down-arrow.png" class="w-5" />
+          </button>
+
+          <div id="profile-menu" hidden class="absolute right-0 top-full z-10 mt-3 w-56 rounded-lg border border-gray-200 bg-white p-3 shadow-lg">
+            <a href="#" class="flex items-center gap-3 rounded-md px-3 py-3 text-base hover:bg-gray-50">
+              <img src="src/img/settings.png" class="h-6 w-6" />
+              <span>Settings</span>
+            </a>
+            <button id="logout-button" type="button" class="flex w-full items-center gap-3 rounded-md px-3 py-3 text-left text-base text-red-600 hover:bg-red-50">
+              <span aria-hidden="true" class="text-2xl leading-none">&#8618;</span>
+              <span>Logout</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -89,82 +113,134 @@
       <div
         class="flex border-3 border-gray-300 p-3 ml-auto mr-15 rounded-xl w-55 gap-3 font-bold px-2"
       >
-        <img src="/src/img/calendar.png" class="w-6 h-6" />
-        <p>Fri, 22 August 2026</p>
+        <img src="src/img/calendar.png" class="w-6 h-6" alt="" />
+        <p id="today-date"></p>
       </div>
 
       <div
+        id="today-tasks"
         class="border-5 rounded-xl font-['Inter'] mx-13 border-gray-300 mt-7 w-280"
       >
-        <div class="flex gap-5 p-6 items-center">
-          <img src="/src/img/options.png" class="w-6 h-6" />
-          <p class="font-bold">Finish F-Task UI</p>
-          <div
-            class="text-[#2C6BF7] font-bold bg-[#E8F1FE] rounded-lg h-full ml-60"
-          >
-            <p class="p-1 px-5">School</p>
-          </div>
-          <div class="flex gap-3 ml-85">
-            <img src="/src/img/calendar.png" class="w-6" />
-            <p>Today</p>
-          </div>
-        </div>
-
-        <div class="w-262 border-1 border-gray-300 mx-auto"></div>
-
-        <div class="flex gap-5 p-6 items-center">
-          <img src="/src/img/options.png" class="w-6 h-6" />
-          <p class="font-bold">Study English</p>
-          <div
-            class="text-[#4515BF] font-bold bg-[#EDE2FD] rounded-lg h-full ml-62.5"
-          >
-            <p class="p-1 px-5">Personal</p>
-          </div>
-          <div class="flex gap-3 ml-83">
-            <img src="/src/img/calendar.png" class="w-6 h-6" />
-            <p>Today</p>
-          </div>
-        </div>
-
-        <div class="w-262 border-1 border-gray-300 mx-auto"></div>
-
-        <div class="flex gap-5 p-6">
-          <img src="/src/img/options.png" class="w-6 h-6" />
-          <p class="font-bold">Submit Assignment</p>
-          <div
-            class="text-[#2C6BF7] font-bold bg-[#E8F1FE] rounded-lg h-full ml-53"
-          >
-            <p class="p-1 px-5">School</p>
-          </div>
-          <div class="flex gap-3 ml-85">
-            <img src="/src/img/calendar.png" class="w-6 h-6" />
-            <p>Today</p>
-          </div>
-        </div>
-
-        <div class="w-262 border-1 border-gray-300 mx-auto"></div>
-
-        <div class="flex gap-5 p-6">
-          <img src="/src/img/options.png" class="w-6 h-6" />
-          <p class="font-bold">Workout</p>
-          <div
-            class="text-[#2CAB6B] font-bold bg-[#DDF8EE] rounded-lg h-full ml-75"
-          >
-            <p class="p-1 px-5">Health</p>
-          </div>
-          <div class="flex gap-3 ml-85.5">
-            <img src="/src/img/calendar.png" class="w-6 h-6" />
-            <p>Today</p>
-          </div>
-        </div>
-
-        <div class="w-262 border-1 border-gray-300 mx-auto"></div>
-
-        <div class="flex gap-5 p-6 justify-center bg-gray-200 m-3 rounded-lg">
-          <img src="/src/img/sun.png" class="w-6" />
+        <div id="today-task-list"></div>
+        <p id="today-empty" class="hidden p-12 text-center text-gray-500">
+          No tasks due today.
+        </p>
+        <div class="flex gap-5 justify-center bg-gray-200 m-3 rounded-lg p-6">
+          <img src="src/img/sun.png" class="w-6" alt="" />
           <p>Keep going! You’ve got this.</p>
         </div>
       </div>
     </section>
+  </body>
+    <script>
+      const savedTasksKey = "taskMTasks";
+      const todayDate = document.getElementById("today-date");
+      const todayTaskList = document.getElementById("today-task-list");
+      const todayEmpty = document.getElementById("today-empty");
+
+      const getSavedTasks = () => {
+        try {
+          return JSON.parse(localStorage.getItem(savedTasksKey)) || [];
+        } catch {
+          return [];
+        }
+      };
+
+      const getTodayKey = () => {
+        const date = new Date();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${date.getFullYear()}-${month}-${day}`;
+      };
+
+      const formatToday = () =>
+        new Date(`${getTodayKey()}T00:00:00`).toLocaleDateString("en-GB", {
+          weekday: "short",
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        });
+
+      const createTodayTask = (task, taskIndex) => {
+        const row = document.createElement("div");
+        row.className = "flex items-center gap-5 p-6";
+
+        const checkButton = document.createElement("button");
+        checkButton.type = "button";
+        checkButton.className = "h-6 w-6 shrink-0";
+        checkButton.setAttribute("aria-label", "Mark task as completed");
+        const checkIcon = document.createElement("img");
+        checkIcon.className = "h-6 w-6";
+        checkIcon.src = task.completed
+          ? "src/img/optionscompleted.png"
+          : "src/img/options.png";
+        checkButton.append(checkIcon);
+
+        const taskLink = document.createElement("a");
+        taskLink.href = `detailTasks.html?task=${encodeURIComponent(task.title)}`;
+        taskLink.className = "font-bold min-w-60 hover:underline";
+        taskLink.textContent = task.title;
+
+        const category = document.createElement("p");
+        category.className = "rounded-lg bg-[#E8F1FE] p-1 px-5 font-bold text-[#2C6BF7]";
+        category.textContent = task.category || "Other";
+
+        const due = document.createElement("div");
+        due.className = "ml-auto flex gap-3";
+        due.innerHTML = '<img src="src/img/calendar.png" class="h-6 w-6" alt="" />';
+        const dueText = document.createElement("p");
+        dueText.textContent = "Today";
+        due.append(dueText);
+
+        checkButton.addEventListener("click", () => {
+          const tasks = getSavedTasks();
+          tasks[taskIndex].completed = !tasks[taskIndex].completed;
+          localStorage.setItem(savedTasksKey, JSON.stringify(tasks));
+          renderTodayTasks();
+        });
+
+        row.append(checkButton, taskLink, category, due);
+        return row;
+      };
+
+      const renderTodayTasks = () => {
+        todayTaskList.replaceChildren();
+        getSavedTasks().forEach((task, taskIndex) => {
+          if (task.dueDate === getTodayKey()) {
+            todayTaskList.append(createTodayTask(task, taskIndex));
+          }
+        });
+        todayEmpty.classList.toggle("hidden", todayTaskList.children.length > 0);
+      };
+
+      todayDate.textContent = formatToday();
+      renderTodayTasks();
+
+      const profileMenuButton = document.getElementById("profile-menu-button");
+      const profileMenu = document.getElementById("profile-menu");
+      const logoutButton = document.getElementById("logout-button");
+      profileMenuButton.addEventListener("click", () => {
+        const isOpen = !profileMenu.hidden;
+        profileMenu.hidden = isOpen;
+        profileMenuButton.setAttribute("aria-expanded", String(!isOpen));
+      });
+      document.addEventListener("click", (event) => {
+        if (!profileMenuButton.contains(event.target) && !profileMenu.contains(event.target)) {
+          profileMenu.hidden = true;
+          profileMenuButton.setAttribute("aria-expanded", "false");
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          profileMenu.hidden = true;
+          profileMenuButton.setAttribute("aria-expanded", "false");
+        }
+      });
+      logoutButton.addEventListener("click", () => {
+        localStorage.clear();
+        sessionStorage.clear();
+        window.location.href = "login.html";
+      });
+    </script>
   </body>
 </html>
