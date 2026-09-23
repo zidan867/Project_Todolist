@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/output.css" />
+    <title>Dashboard</title>
+  </head>
+  <body class="flex">
+    <section class="w-72  ">
+      <div class="flex items-center justify-center gap-2 p-13">
+        <img src="/src/img/check.png" class="w-15" />
+        <h1 class="text-2xl font-bold font-['Inter']">Task-M</h1>
+      </div>
+
+      <div class="ml-8 w-40">
+        <a href="#" class="flex gap-7 pb-7">
+          <img src="/src/img/dashboard.png" class="w-8" />
+          <p class="text-lg pt-1 font-bold font-['Inter']">Dashboard</p>
+        </a>
+        <a href="#" class="flex gap-7 pb-7">
+          <img src="/src/img/mytasks.png" class="w-8" />
+          <p class="text-lg pt-1 font-bold font-['Inter']">My Tasks</p>
+        </a>
+        <a href="#" class="flex gap-7 pb-7">
+          <img src="/src/img/today.png" class="w-8" />
+          <p class="text-lg pt-1 font-bold font-['Inter']">Today</p>
+        </a>
+        <a href="#" class="flex gap-7 pb-7">
+          <img src="/src/img/upcoming.png" class="w-8" />
+          <p class="text-lg pt-1 font-bold font-['Inter']">Upcoming</p>
+        </a>
+        <a href="#" class="flex gap-7 pb-7">
+          <img src="/src/img/completed.png" class="w-8" />
+          <p class="text-lg pt-1 font-bold font-['Inter']">Completed</p>
+        </a>
+      </div>
+
+      <div class="w-65 border-1 border-gray-300 mx-auto"></div>
+
+      <div class="ml-8 w-40">
+        <a href="#" class="flex gap-7 pb-7 pt-7">
+          <img src="/src/img/settings.png" class="w-8" />
+          <p class="text-lg pt-1 font-bold font-['Inter']">Settings</p>
+        </a>
+        <a href="#" class="flex gap-7 pb-7">
+          <img src="/src/img/help.png" class="w-8" />
+          <p class="text-lg pt-1 font-bold font-['Inter']">Help</p>
+        </a>
+      </div>
+    </section>
+
+    <div class="h-183 border-3 border-gray-300"></div>
+
+    <section>
+      <div class="flex items-center justify-between p-13 ml-130 gap-10">
+        <img src="/src/img/search.png" class="absolute w-5 mx-4" />
+        <input
+          type="text"
+          placeholder="Search Tasks..."
+          class="border-3 border-gray-300 outline-none p-2 rounded-xl w-70 px-11 font-['Inter']"
+        />
+        <a href="#" class="w-7">
+          <img src="/src/img/notification.png" />
+        </a>
+
+        <div class="flex justify-between items-center gap-5 font-['Inter']">
+          <img src="/src/img/profile.png" class="w-7" />
+          <p class="">Faras Example</p>
+          <a href="#">
+            <img src="/src/img/down-arrow.png" class="w-5" />
+          </a>
+        </div>
+      </div>
+
+      <div class="font-['Inter'] pt-3 mx-13">
+        <h1 class="text-3xl font-bold pb-3">Good Morning, Faras! 👋</h1>
+        <p>Let’s get your tasks done today.</p>
+      </div>
+
+      <div class="flex justify-between items-center font-['Inter'] pt-5 pb-7">
+        <h1 class="font-bold mx-13 text-xl pt-5">Recent Tasks</h1>
+        <a href="#" class="bg-[#125FDD] text-white flex gap-3 p-3 rounded-xl mr-13">
+          <img src="/src/img/add.png" class="w-5 h-5">
+          <p>Add Task</p>
+        </a>
+      </div>
+
+      <div class="border-5 rounded-xl font-['Inter'] mx-13 border-gray-300 w-280">
+        <a href="#" class="flex gap-5 p-6">
+          <img src="/src/img/options.png" class="w-6 h-6">
+          <p class="font-bold">Design F-Task UI</p>
+          <img src="/src/img/calendar.png" class="w-6 h-6 ml-60">
+          <p class="text-gray-500">22 Aug 2026</p>
+          <p class="text-gray-500 ml-80">Today</p>
+        </a>
+
+        <div class="w-257 border-1 border-gray-300 mx-auto"></div>
+        
+        <div class="flex gap-5 p-6">
+          <img src="/src/img/options.png" class="w-6 h-6">
+          <p class="font-bold">Create REST API</p>
+          <img src="/src/img/calendar.png" class="w-6 h-6 ml-61">
+          <p class="text-gray-500">23 Aug 2026</p>
+          <p class="text-gray-500 ml-72">Tomorrow</p>
+        </div>
+
+        <div class="w-257 border-1 border-gray-300 mx-auto"></div>
+        
+        <div class="flex gap-5 p-6">
+          <img src="/src/img/options.png" class="w-6 h-6">
+          <p class="font-bold">Study English</p>
+          <img src="/src/img/calendar.png" class="w-6 h-6 ml-66">
+          <p class="text-gray-500">24 Aug 2026</p>
+          <p class="text-gray-500 ml-71">2 days left</p>
+        </div>
+
+        <div class="w-257 border-1 border-gray-300 mx-auto"></div>
+        
+        <div class="flex gap-5 p-6">
+          <img src="/src/img/optionscompleted.png" class="w-6 h-6">
+          <p class="font-bold">Create Database</p>
+          <img src="/src/img/calendar.png" class="w-6 h-6 ml-61">
+          <p class="text-gray-500">20 Aug 2026</p>
+          <p class="text-gray-500 ml-74">Completed</p>
+        </div>
+
+        <div class="w-257 border-1 border-gray-300 mx-auto"></div>
+        
+        <div class="flex gap-5 p-6 text-[#1E58D5] justify-center">
+          <p>View all tasks →</p>
+        </div>
+      </div>  
+    </section>
+  </body>
+</html>
