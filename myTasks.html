@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/output.css" />
+    <title>My Tasks</title>
+  </head>
+  <body class="flex">
+    <section
+      class="fixed left-0 top-0 z-50 h-screen w-72 border-r-2 border-gray-300 bg-white"
+    >
+      <div class="flex items-center justify-center gap-2 p-13">
+        <img src="/src/img/check.png" class="w-15" />
+        <h1 class="text-2xl font-bold font-['Inter']">Task-M</h1>
+      </div>
+
+      <div class="ml-8 w-40">
+        <a href="#" class="flex gap-7 pb-7">
+          <img src="/src/img/dashboard.png" class="w-8" />
+          <p class="text-lg pt-1 font-bold font-['Inter']">Dashboard</p>
+        </a>
+        <a href="#" class="flex gap-7 pb-7">
+          <img src="/src/img/mytasks.png" class="w-8" />
+          <p class="text-lg pt-1 font-bold font-['Inter']">My Tasks</p>
+        </a>
+        <a href="#" class="flex gap-7 pb-7">
+          <img src="/src/img/today.png" class="w-8" />
+          <p class="text-lg pt-1 font-bold font-['Inter']">Today</p>
+        </a>
+        <a href="#" class="flex gap-7 pb-7">
+          <img src="/src/img/upcoming.png" class="w-8" />
+          <p class="text-lg pt-1 font-bold font-['Inter']">Upcoming</p>
+        </a>
+        <a href="#" class="flex gap-7 pb-7">
+          <img src="/src/img/completed.png" class="w-8" />
+          <p class="text-lg pt-1 font-bold font-['Inter']">Completed</p>
+        </a>
+      </div>
+
+      <div class="w-65 border-1 border-gray-300 mx-auto"></div>
+
+      <div class="ml-8 w-40">
+        <a href="#" class="flex gap-7 pb-7 pt-7">
+          <img src="/src/img/settings.png" class="w-8" />
+          <p class="text-lg pt-1 font-bold font-['Inter']">Settings</p>
+        </a>
+        <a href="#" class="flex gap-7 pb-7">
+          <img src="/src/img/help.png" class="w-8" />
+          <p class="text-lg pt-1 font-bold font-['Inter']">Help</p>
+        </a>
+      </div>
+    </section>
+
+    <div class="h-290 border-2 border-gray-300 ml-72 fixed"></div>
+
+    <section class="ml-72 font-['Inter']">
+      <div class="fixed left-72 bg-white mx-1">
+        <div class="flex items-center justify-between p-13 mx-13 gap-10 ml-119">
+          <img src="/src/img/search.png" class="absolute w-5 mx-4" />
+          <input
+            type="text"
+            placeholder="Search Tasks..."
+            class="border-3 border-gray-300 outline-none p-2 rounded-xl w-74 px-11 font-['Inter']"
+          />
+          <a href="#" class="w-7">
+            <img src="/src/img/notification.png" />
+          </a>
+
+          <div class="flex justify-between items-center gap-5 font-['Inter']">
+            <img src="/src/img/profile.png" class="w-7" />
+            <p class="">Faras Arrobi</p>
+            <a href="#">
+              <img src="/src/img/down-arrow.png" class="w-5" />
+            </a>
+          </div>
+        </div>
+
+        <div class="mx-13 bg-white">
+          <h1 class="text-3xl font-bold pb-1">My Tasks</h1>
+          <p>Managed and organize all of your tasks.</p>
+        </div>
+
+        <div class="flex gap-5 mx-13 items-center py-5">
+          <img src="/src/img/search.png" class="absolute w-5 mx-4" />
+          <input
+            type="text"
+            placeholder="Search Tasks..."
+            class="border-3 border-gray-300 outline-none p-1.5 rounded-xl w-169 px-11"
+          />
+
+          <div
+            class="flex border-3 border-gray-300 outline-none p-1.5 rounded-xl w-32 gap-3 font-bold px-2"
+          >
+            <img src="/src/img/filter.png" class="w-6 h-6" />
+            <p>Filter</p>
+            <a href="#">
+              <img src="/src/img/down-arrow.png" class="w-5 h-5 mt-1" />
+            </a>
+          </div>
+
+          <div
+            class="flex border-3 border-gray-300 outline-none p-1.5 rounded-xl w-32 gap-3 font-bold px-2"
+          >
+            <img src="/src/img/sort.png" class="w-6 h-6" />
+            <p>Sort</p>
+            <a href="#">
+              <img src="/src/img/down-arrow.png" class="w-5 h-5 mt-1" />
+            </a>
+          </div>
+
+          <a href="#" class="bg-[#125FDD] text-white flex gap-3 p-2 rounded-xl">
+            <img src="/src/img/add.png" class="w-5 h-5" />
+            <p>Add Task</p>
+          </a>  
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
