@@ -1,6 +1,6 @@
 # Aplikasi To-Do List
 
-Proyek kolaborasi tim KodeKita Studio — Simulasi Tim Developer, RPL Kelas XI.
+Proyek kolaborasi Task-M — Simulasi Tim Developer, RPL Kelas XI.
 
 # Deskripsi
 
