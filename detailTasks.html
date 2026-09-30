@@ -10,6 +10,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/src/output.css" />
+    <script>
+      if (localStorage.getItem("taskMLoggedIn") !== "true") {
+        window.location.replace("login.html");
+      }
+    </script>
     <title>Detail Tasks</title>
   </head>
   <body class="flex">
@@ -17,29 +22,29 @@
       class="fixed left-0 top-0 z-50 h-screen w-72 border-r-2 border-gray-300 bg-white"
     >
       <div class="flex items-center justify-center gap-2 p-13">
-        <img src="/src/img/check.png" class="w-15" />
+        <img src="src/img/check.png" class="w-15" />
         <h1 class="text-2xl font-bold font-['Inter']">Task-M</h1>
       </div>
 
       <div class="ml-8 w-40">
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/dashboard.png" class="w-8" />
+        <a href="dashboard.html" class="flex gap-7 pb-7">
+          <img src="src/img/dashboard.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Dashboard</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/mytasks.png" class="w-8" />
+        <a href="myTasks.html" class="flex gap-7 pb-7">
+          <img src="src/img/mytasks.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">My Tasks</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/today.png" class="w-8" />
+        <a href="today.html" class="flex gap-7 pb-7">
+          <img src="src/img/today.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Today</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/upcoming.png" class="w-8" />
+        <a href="upComing.html" class="flex gap-7 pb-7">
+          <img src="src/img/upcoming.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Upcoming</p>
         </a>
-        <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/completed.png" class="w-8" />
+        <a href="completed.html" class="flex gap-7 pb-7">
+          <img src="src/img/completed.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Completed</p>
         </a>
       </div>
@@ -48,11 +53,11 @@
 
       <div class="ml-8 w-40">
         <a href="#" class="flex gap-7 pb-7 pt-7">
-          <img src="/src/img/settings.png" class="w-8" />
+          <img src="src/img/settings.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Settings</p>
         </a>
         <a href="#" class="flex gap-7 pb-7">
-          <img src="/src/img/help.png" class="w-8" />
+          <img src="src/img/help.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Help</p>
         </a>
       </div>
@@ -63,44 +68,60 @@
     <section class="ml-72 font-['Inter']">
       <div class="fixed left-72 bg-white mx-1">
         <div class="flex items-center justify-between p-13 mx-13 gap-10 ml-119">
-          <img src="/src/img/search.png" class="absolute w-5 mx-4" />
+          <img src="src/img/search.png" class="absolute w-5 mx-4" />
           <input
             type="text"
             placeholder="Search Tasks..."
             class="border-3 border-gray-300 outline-none p-2 rounded-xl w-74 px-11 font-['Inter']"
           />
           <a href="#" class="w-7">
-            <img src="/src/img/notification.png" />
+            <img src="src/img/notification.png" />
           </a>
 
-          <div class="flex justify-between items-center gap-5 font-['Inter']">
-            <img src="/src/img/profile.png" class="w-7" />
+          <div class="relative flex items-center gap-5 font-['Inter']">
+            <img src="src/img/profile.png" class="w-7" />
             <p class="">Faras Arrobi</p>
-            <a href="#">
-              <img src="/src/img/down-arrow.png" class="w-5" />
-            </a>
+            <button id="profile-menu-button" type="button" aria-expanded="false" aria-controls="profile-menu" class="flex items-center">
+              <img src="src/img/down-arrow.png" class="w-5" />
+            </button>
+            <div id="profile-menu" hidden class="absolute right-0 top-full z-10 mt-3 w-56 rounded-lg border border-gray-200 bg-white p-3 shadow-lg">
+              <a href="#" class="flex items-center gap-3 rounded-md px-3 py-3 text-base hover:bg-gray-50">
+                <img src="src/img/settings.png" class="h-6 w-6" />
+                <span>Settings</span>
+              </a>
+              <button id="logout-button" type="button" class="flex w-full items-center gap-3 rounded-md px-3 py-3 text-left text-base text-red-600 hover:bg-red-50">
+                <span aria-hidden="true" class="text-2xl leading-none">&#8618;</span>
+                <span>Logout</span>
+              </button>
+            </div>
           </div>
         </div>
 
         <div class="mx-13 bg-white">
           <div class="flex gap-5 pt-8">
-            <a href="#"><img src="/src/img/back 2.png" class="w-5 h-5" /></a>
-            <p>Back to My Tasks</p>
+            <a href="dashboard.html" aria-label="Back to Dashboard">
+              <img src="src/img/back 2.png" class="w-5 h-5" />
+            </a>
+            <p>Back to Dashboard</p>
           </div>
           <div class="flex gap-3 justify-between">
             <h1 class="text-3xl font-bold pt-7">Task Detail</h1>
-            <div
+            <button
+              id="edit-task-button"
+              type="button"
               class="flex border-3 border-gray-300 p-2 w-27 rounded-lg px-4 font-bold gap-3 mt-5 ml-170"
             >
-              <img src="/src/img/actions1.png" class="w-5 h-5" />
+              <img src="src/img/actions1.png" class="w-5 h-5" />
               <p>Edit</p>
-            </div>
-            <div
+            </button>
+            <button
+              id="delete-task-button"
+              type="button"
               class="flex border-3 border-red-400 p-2 w-33 rounded-lg px-5 font-bold gap-3 mt-5 text-red-500"
             >
-              <img src="/src/img/delete.png" class="w-5 h-5" />
+              <img src="src/img/delete.png" class="w-5 h-5" />
               <p>Delete</p>
-            </div>
+            </button>
           </div>
         </div>
       </div>

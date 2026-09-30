@@ -1,10 +1,33 @@
-## Menjalankan aplikasi
+# Muhammad Zidan Rizqi Pratama (PM)
+# Rayzan Harya Rizky (Back End)
+# Faras Arrobi Albyan (UI/UX)
+# Hanaya Chika Rahmadhani (Front End)
 
-Pastikan Node.js sudah terpasang, lalu jalankan dari folder project:
 
-```bash
-node backend/server.js
-```
+| No | Tugas                                   | Penanggung Jawab           | Status |
+| -- | --------------------------------------- | --------------------------  | ---- |
+| 1 | Membuat desain tampilan To-Do List            | UI/UX                  | Done |
+| 2 | Membuat struktur dan tampilan web             | Front-End              | Done |
+| 3 | Membuat fitur tambah, edit, dan hapus tugas   | Back-End               | Done |
+| 4 | Menghubungkan Front-End dengan Back-End       | Front-End & Back-End   | Done |
+| 5 | Melakukan testing dan membuat dokumentasi     | PM & UI/UX             | To Do |
 
-Buka `http://localhost:3000/dashboard.html`. Saat form Add Task berhasil dikirim,
-task akan ditambahkan ke `data/task.json` dan muncul notifikasi berhasil.
+ # Fitur
+ 
+ # Fitur utama
+ 
+-Menampilkan daftar tugas
+-Menambah tugas baru
+-Mengedit tugas
+-Menghapus tugas
+
+# Fitur pendukung (sesuai desain Figma)
+
+-Login dengan email atau akun Google, serta log out
+-Kategori tugas (misalnya School, Personal, Health)
+-Due date dan reminder
+-Status tugas: Pending, Scheduled, Completed, dan Overdue
+-Halaman Today, Upcoming, dan Completed
+-Halaman detail tugas beserta subtask
+-Pencarian, filter, dan pengurutan tugas
+-Tombol Clear Completed untuk menghapus semua tugas selesai
