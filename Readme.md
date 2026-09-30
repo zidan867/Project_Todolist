@@ -79,6 +79,12 @@ cd Project_Todolist
 # Screenshot Tampilan
 
 <img width="1080" height="766" alt="WhatsApp Image 2026-09-30 at 22 00 39" src="https://github.com/user-attachments/assets/3ab7e28c-e877-4c47-ab54-dcde02530ee5" />
+<img width="1075" height="763" alt="image" src="https://github.com/user-attachments/assets/cc562d8a-9b76-4ed0-9667-2dc1a2a57743" />
+<img width="1073" height="768" alt="image" src="https://github.com/user-attachments/assets/78445284-a2bb-4d49-ae30-0a29acba5db8" />
+![Uploading image.png…]()
+
+
+
 
 
 
