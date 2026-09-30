@@ -4,7 +4,7 @@ Proyek kolaborasi Task-M — Simulasi Tim Developer, RPL Kelas XI.
 
 # Deskripsi
 
-Aplikasi To-Do List sederhana untuk mencatat dan mengelola tugas harian. Pengguna dapat menambah, melihat, mengubah, dan menghapus tugas (CRUD), serta menandai tugas yang sudah selesai. Dibangun sebagai simulasi proyek klien menggunakan alur kerja kolaborasi Git & GitHub ala industri IT.
+Website To-Do List (Task-M) sederhana untuk mencatat dan mengelola tugas harian. Pengguna dapat menambah, melihat, mengubah, dan menghapus tugas (CRUD), serta menandai tugas yang sudah selesai. Dibangun sebagai simulasi proyek klien menggunakan alur kerja kolaborasi Git & GitHub ala industri IT.
 
 # Anggota Tim & Peran
 
