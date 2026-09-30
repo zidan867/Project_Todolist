@@ -110,44 +110,215 @@
           class="border-5 rounded-xl font-['Inter'] mx-13 w-280 border-gray-300 py-5"
         >
           <div class="flex gap-5 pb-3">
-            <img src="/src/img/options.png" class="w-6 h-6 ml-6 mt-1" />
-            <p class="font-bold text-2xl">Design F-Task UI</p>
+            <img src="src/img/options.png" class="w-6 h-6 ml-6 mt-1" />
+            <p id="detail-task-title" class="font-bold text-2xl"></p>
           </div>
           <div class="flex mx-17">
             <div
               class="text-[#2C6BF7] font-bold bg-[#E8F1FE] rounded-lg h-full"
             >
-              <p class="p-1 px-5">School</p>
+              <p id="detail-task-category" class="p-1 px-5"></p>
             </div>
             <div class="flex gap-3 mx-6">
-              <img src="/src/img/calendar.png" class="w-6 h-6 ml-3" />
-              <p>22 Aug 2026</p>
+              <img src="src/img/calendar.png" class="w-6 h-6 ml-3" />
+              <p id="detail-task-due-date"></p>
             </div>
           </div>
           <p class="font-bold mx-6 pt-8 text-xl">Description</p>
-          <p class="mx-6 pt-2 pb-7">Create the user interface for F-Task desktop application using Figma.</p>
+          <p id="detail-task-description" class="mx-6 pt-2 pb-7"></p>
 
           <div class="w-265 border-1 border-gray-400 mx-auto"></div>
 
-          <p class="font-bold mx-6 pt-7 text-xl">Subtasks</p>
-          <div class="mx-6 pt-5 flex gap-5">
-            <img src="/src/img/checkbox.png" class="w-6 h-6">
-            <p class="line-through">Create Wireframe</p>
-          </div>
-          <div class="mx-6 pt-5 flex gap-5">
-            <img src="/src/img/checkbox.png" class="w-6 h-6">
-            <p class="line-through">Design Main UI</p>
-          </div>
-          <div class="mx-6 pt-5 flex gap-5">
-            <img src="/src/img/unchecked.png" class="w-6 h-6">
-            <p>Prototype</p>
-          </div>
-          <div class="mx-6 pt-5 flex gap-5">
-            <img src="/src/img/unchecked.png" class="w-6 h-6">
-            <p>Review And Final Touch</p>
-          </div>
+          <p class="font-bold mx-6 pt-7 text-xl">Reminder</p>
+          <p id="detail-task-reminder" class="mx-6 pt-2 pb-3"></p>
         </div>
       </div>
+
+      <div
+        id="edit-task-modal"
+        hidden
+        class="fixed left-0 top-0 z-20 flex h-screen w-screen items-center justify-center bg-black/20 p-4"
+        style="position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;"
+      >
+        <form
+          id="edit-task-form"
+          class="mx-auto max-h-[calc(100vh-2rem)] w-full max-w-md overflow-y-auto rounded-xl border-3 border-gray-300 bg-white p-3 shadow-xl"
+        >
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-bold">Edit Task</h2>
+            <button id="close-edit-task" type="button" class="text-3xl leading-none text-gray-500 hover:text-black">&times;</button>
+          </div>
+          <div class="mt-3 space-y-2">
+            <label class="block font-bold">Title
+              <input id="edit-title" name="title" required class="mt-1 w-full rounded-lg border-2 border-slate-200 p-2 font-normal" />
+            </label>
+            <label class="block font-bold">Description
+              <textarea id="edit-description" name="description" rows="2" class="mt-1 w-full resize-none rounded-lg border-2 border-slate-200 p-2 font-normal"></textarea>
+            </label>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <label class="block font-bold">Category
+                <select id="edit-category" name="category" class="mt-1 w-full rounded-lg border-2 border-slate-200 bg-white p-2 font-normal">
+                  <option value="">Select category...</option>
+                  <option>Work</option>
+                  <option>Personal</option>
+                  <option>Study</option>
+                </select>
+              </label>
+              <label class="block font-bold">Due Date
+                <input id="edit-due-date" name="dueDate" type="date" class="mt-1 w-full rounded-lg border-2 border-slate-200 p-2 font-normal" />
+              </label>
+            </div>
+            <label class="flex items-center gap-2 font-normal">
+              <input id="edit-reminder" name="reminder" type="checkbox" class="h-5 w-5 accent-[#125FDD]" />
+              Set reminder
+            </label>
+          </div>
+          <div class="mt-3 flex justify-end gap-2">
+            <button id="cancel-edit-task" type="button" class="rounded-lg border-3 border-gray-300 px-5 py-2 font-bold">Cancel</button>
+            <button type="submit" class="rounded-lg bg-[#125FDD] px-5 py-2 font-bold text-white">Save Changes</button>
+          </div>
+        </form>
+      </div>
     </section>
+  </body>
+    <script>
+      const profileMenuButton = document.getElementById("profile-menu-button");
+      const profileMenu = document.getElementById("profile-menu");
+      const logoutButton = document.getElementById("logout-button");
+      const taskTitle = document.getElementById("detail-task-title");
+      const taskCategory = document.getElementById("detail-task-category");
+      const taskDueDate = document.getElementById("detail-task-due-date");
+      const taskDescription = document.getElementById("detail-task-description");
+      const taskReminder = document.getElementById("detail-task-reminder");
+      const deleteTaskButton = document.getElementById("delete-task-button");
+      const editTaskButton = document.getElementById("edit-task-button");
+      const editTaskModal = document.getElementById("edit-task-modal");
+      const editTaskForm = document.getElementById("edit-task-form");
+      const closeEditTask = document.getElementById("close-edit-task");
+      const cancelEditTask = document.getElementById("cancel-edit-task");
+      const editTitle = document.getElementById("edit-title");
+      const editDescription = document.getElementById("edit-description");
+      const editCategory = document.getElementById("edit-category");
+      const editDueDate = document.getElementById("edit-due-date");
+      const editReminder = document.getElementById("edit-reminder");
+
+      const selectedTaskTitle = new URLSearchParams(window.location.search).get(
+        "task",
+      );
+      const savedTasks = JSON.parse(localStorage.getItem("taskMTasks") || "[]");
+      const selectedTask = savedTasks.find(
+        (task) => task.title === selectedTaskTitle,
+      );
+
+      if (selectedTask) {
+        taskTitle.textContent = selectedTask.title;
+        taskCategory.textContent = selectedTask.category || "Uncategorized";
+        taskDueDate.textContent = selectedTask.dueDate || "No due date";
+        taskDescription.textContent =
+          selectedTask.description || "No description added.";
+        taskReminder.textContent = selectedTask.reminder
+          ? "Reminder is enabled."
+          : "No reminder set.";
+
+        editTitle.value = selectedTask.title;
+        editDescription.value = selectedTask.description || "";
+        editCategory.value = selectedTask.category || "";
+        editDueDate.value = selectedTask.dueDate || "";
+        editReminder.checked = Boolean(selectedTask.reminder);
+      }
+
+      const closeEditModal = () => {
+        editTaskModal.hidden = true;
+        document.body.classList.remove("overflow-hidden");
+      };
+
+      editTaskButton.addEventListener("click", () => {
+        if (!selectedTask) return;
+        editTaskModal.hidden = false;
+        document.body.classList.add("overflow-hidden");
+        editTitle.focus();
+      });
+      closeEditTask.addEventListener("click", closeEditModal);
+      cancelEditTask.addEventListener("click", closeEditModal);
+      editTaskModal.addEventListener("click", (event) => {
+        if (event.target === editTaskModal) closeEditModal();
+      });
+
+      editTaskForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!selectedTask) return;
+
+        const taskIndex = savedTasks.findIndex((task) =>
+          selectedTask.id ? task.id === selectedTask.id : task.title === selectedTask.title,
+        );
+        if (taskIndex < 0) return;
+
+        savedTasks[taskIndex] = {
+          ...savedTasks[taskIndex],
+          title: editTitle.value.trim(),
+          description: editDescription.value.trim(),
+          category: editCategory.value,
+          dueDate: editDueDate.value,
+          reminder: editReminder.checked,
+        };
+        localStorage.setItem("taskMTasks", JSON.stringify(savedTasks));
+        window.location.href = `detailTasks.html?task=${encodeURIComponent(savedTasks[taskIndex].title)}`;
+      });
+
+      deleteTaskButton.addEventListener("click", async () => {
+        if (!selectedTask) {
+          return;
+        }
+
+        const shouldDelete = window.confirm(
+          `Delete task "${selectedTask.title}"?`,
+        );
+
+        if (!shouldDelete) {
+          return;
+        }
+
+        try {
+          const response = await fetch(
+            `/api/tasks/${encodeURIComponent(selectedTask.id)}`,
+            { method: "DELETE" },
+          );
+
+          if (!response.ok) {
+            throw new Error("Task gagal dihapus dari task.json");
+          }
+
+          const remainingTasks = savedTasks.filter(
+            (task) => String(task.id) !== String(selectedTask.id),
+          );
+          localStorage.setItem("taskMTasks", JSON.stringify(remainingTasks));
+          window.location.href = "dashboard.html";
+        } catch (error) {
+          window.alert(error.message);
+        }
+      });
+      profileMenuButton.addEventListener("click", () => {
+        const isOpen = !profileMenu.hidden;
+        profileMenu.hidden = isOpen;
+        profileMenuButton.setAttribute("aria-expanded", String(!isOpen));
+      });
+      document.addEventListener("click", (event) => {
+        if (!profileMenuButton.contains(event.target) && !profileMenu.contains(event.target)) {
+          profileMenu.hidden = true;
+          profileMenuButton.setAttribute("aria-expanded", "false");
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          profileMenu.hidden = true;
+          profileMenuButton.setAttribute("aria-expanded", "false");
+        }
+      });
+      logoutButton.addEventListener("click", () => {
+        localStorage.clear();
+        sessionStorage.clear();
+        window.location.href = "login.html";
+      });
+    </script>
   </body>
 </html>

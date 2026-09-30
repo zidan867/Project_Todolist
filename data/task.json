@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1,
+    "title": "Design F-Task UI",
+    "date": "22 Aug 2026",
+    "category": "Work",
+    "status": "Today"
+  },
+  {
+    "id": 2,
+    "title": "Create REST API",
+    "date": "23 Aug 2026",
+    "category": "Study",
+    "status": "Tomorrow"
+  },
+  {
+    "id": 4,
+    "title": "tes",
+    "description": "tes",
+    "category": "Personal",
+    "dueDate": "2026-09-24",
+    "reminder": true,
+    "completed": false
+  },
+  {
+    "id": 5,
+    "title": "tes",
+    "description": "tes",
+    "category": "Work",
+    "dueDate": "2026-09-24",
+    "reminder": false,
+    "completed": false
+  },
+  {
+    "id": 6,
+    "title": "tes 2",
+    "description": "tes lagi",
+    "category": "Work",
+    "dueDate": "2026-09-24",
+    "reminder": true,
+    "completed": false
+  },
+  {
+    "id": 7,
+    "title": "tes 3",
+    "description": "tes",
+    "category": "Personal",
+    "dueDate": "2026-09-24",
+    "reminder": true,
+    "completed": false
+  },
+  {
+    "id": 8,
+    "title": "tes 4",
+    "description": "rayzan",
+    "category": "Study",
+    "dueDate": "2026-09-25",
+    "reminder": false,
+    "completed": false
+  }
+]

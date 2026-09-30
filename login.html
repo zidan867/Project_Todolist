@@ -17,7 +17,7 @@
   </head>
   <body class="flex min-h-screen">
     <section class="w-1/2">
-      <img src="/src/img/f-task.png" class="w-full h-screen object-cover" />
+      <img src="src/img/f-task.png" class="w-full h-screen object-cover" />
     </section>
 
     <section class="w-1/2 font-['Inter'] flex flex-col items-center">
@@ -82,7 +82,8 @@
         </label>
 
         <button
-          type="submit"
+          type="button"
+          onclick="loginUser()"
           class="w-full h-12 rounded-lg bg-purple-600 text-white text-base hover:bg-purple-700 transition"
         >
           Sign In
@@ -100,11 +101,11 @@
           type="button"
           class="w-full h-12 rounded-lg border-2 border-gray-200 flex items-center justify-center gap-4 text-gray-800 font-bold hover:bg-gray-50 transition"
         >
-          <img src="/src/img/google (2).png" class="w-5 h-5" />
+          <img src="src/img/google (2).png" class="w-5 h-5" />
 
           <span> Sign in with Google </span>
         </button>
-        
+
         <p class="text-center text-gray-500 mt-6">
           Don't have an account?
 
@@ -112,5 +113,11 @@
         </p>
       </div>
     </section>
+    <script>
+      function loginUser() {
+        localStorage.setItem("taskMLoggedIn", "true");
+        window.location.href = "dashboard.html";
+      }
+    </script>
   </body>
 </html>
