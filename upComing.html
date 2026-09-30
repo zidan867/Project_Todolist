@@ -9,12 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/src/output.css" />
-    <script>
-      if (localStorage.getItem("taskMLoggedIn") !== "true") {
-        window.location.replace("login.html");
-      }
-    </script>
+    <link rel="stylesheet" href="src/output.css" />
     <title>Up Coming</title>
   </head>
   <body class="flex">
@@ -27,23 +22,23 @@
       </div>
 
       <div class="ml-8 w-40">
-        <a href="dashboard.html" class="flex gap-7 pb-7">
+        <a href="#" class="flex gap-7 pb-7">
           <img src="src/img/dashboard.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Dashboard</p>
         </a>
-        <a href="myTasks.html" class="flex gap-7 pb-7">
+        <a href="#" class="flex gap-7 pb-7">
           <img src="src/img/mytasks.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">My Tasks</p>
         </a>
-        <a href="today.html" class="flex gap-7 pb-7">
+        <a href="#" class="flex gap-7 pb-7">
           <img src="src/img/today.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Today</p>
         </a>
-        <a href="upComing.html" class="flex gap-7 pb-7">
+        <a href="#" class="flex gap-7 pb-7">
           <img src="src/img/upcoming.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Upcoming</p>
         </a>
-        <a href="completed.html" class="flex gap-7 pb-7">
+        <a href="#" class="flex gap-7 pb-7">
           <img src="src/img/completed.png" class="w-8" />
           <p class="text-lg pt-1 font-bold font-['Inter']">Completed</p>
         </a>
@@ -78,22 +73,12 @@
             <img src="src/img/notification.png" />
           </a>
 
-          <div class="relative flex items-center gap-5 font-['Inter']">
+          <div class="flex justify-between items-center gap-5 font-['Inter']">
             <img src="src/img/profile.png" class="w-7" />
             <p class="">Faras Arrobi</p>
-            <button id="profile-menu-button" type="button" aria-expanded="false" aria-controls="profile-menu" class="flex items-center">
+            <a href="#">
               <img src="src/img/down-arrow.png" class="w-5" />
-            </button>
-            <div id="profile-menu" hidden class="absolute right-0 top-full z-10 mt-3 w-56 rounded-lg border border-gray-200 bg-white p-3 shadow-lg">
-              <a href="#" class="flex items-center gap-3 rounded-md px-3 py-3 text-base hover:bg-gray-50">
-                <img src="src/img/settings.png" class="h-6 w-6" />
-                <span>Settings</span>
-              </a>
-              <button id="logout-button" type="button" class="flex w-full items-center gap-3 rounded-md px-3 py-3 text-left text-base text-red-600 hover:bg-red-50">
-                <span aria-hidden="true" class="text-2xl leading-none">&#8618;</span>
-                <span>Logout</span>
-              </button>
-            </div>
+            </a>
           </div>
         </div>
 
@@ -126,19 +111,29 @@
             </div>
           </div>
 
-          <div class="relative">
-            <button id="upcoming-sort-button" type="button" aria-expanded="false" class="flex w-32 gap-3 rounded-xl border-3 border-gray-300 p-1.5 px-2 font-bold">
-              <img src="src/img/sort.png" class="h-6 w-6" alt="" />
-              <span id="upcoming-sort-label">Sort</span>
-              <img src="src/img/down-arrow.png" class="mt-1 h-5 w-5" alt="" />
-            </button>
-            <div id="upcoming-sort-menu" hidden class="absolute left-0 top-full z-20 mt-2 w-44 rounded-lg border border-gray-200 bg-white p-2 shadow-lg">
-              <button type="button" data-upcoming-sort="default" class="block w-full rounded-md px-3 py-2 text-left hover:bg-gray-100">Default</button>
-              <button type="button" data-upcoming-sort="az" class="block w-full rounded-md px-3 py-2 text-left hover:bg-gray-100">A - Z</button>
-              <button type="button" data-upcoming-sort="za" class="block w-full rounded-md px-3 py-2 text-left hover:bg-gray-100">Z - A</button>
-              <button type="button" data-upcoming-sort="deadline-asc" class="block w-full rounded-md px-3 py-2 text-left hover:bg-gray-100">Deadline terdekat</button>
-              <button type="button" data-upcoming-sort="deadline-desc" class="block w-full rounded-md px-3 py-2 text-left hover:bg-gray-100">Deadline terjauh</button>
-            </div>
+          <div
+            class="flex border-3 border-gray-300 outline-none p-1.5 rounded-xl px-5 gap-3 font-bold"
+          >
+            <p>This Week</p>
+          </div>
+
+          <div
+            class="flex border-3 border-gray-300 outline-none p-1.5 rounded-xl px-5 gap-3 font-bold"
+          >
+            <p>Next Week</p>
+          </div>
+
+          <div
+            class="flex border-3 border-gray-300 outline-none p-1.5 rounded-xl px-5 gap-3 font-bold"
+          >
+            <p>This Month</p>
+          </div>
+
+          <div
+            class="flex border-3 border-gray-300 outline-none p-1.5 rounded-xl gap-3 font-bold px-5 ml-78"
+          >
+            <img src="src/img/filter.png" class="w-6 h-6" />
+            <p>Filter</p>
           </div>
 
           <a href="#" class="bg-[#125FDD] text-white flex gap-3 p-2 rounded-xl">
@@ -150,7 +145,6 @@
 
       <div class="pt-75 pb-10">
         <div
-          id="upcoming-task-panel"
           class="border-5 rounded-xl font-['Inter'] mx-13 w-280 border-gray-300"
         >
           <div class="flex gap-5 p-3 bg-gray-100 rounded-xl font-bold">
