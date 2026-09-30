@@ -78,7 +78,9 @@ cd Project_Todolist
 
 # Screenshot Tampilan
 
-![To-Do List](asset/todolist.png)
+<img width="1080" height="766" alt="WhatsApp Image 2026-09-30 at 22 00 39" src="https://github.com/user-attachments/assets/3ab7e28c-e877-4c47-ab54-dcde02530ee5" />
+
+
 
 ---
 
