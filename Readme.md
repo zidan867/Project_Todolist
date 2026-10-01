@@ -94,10 +94,10 @@ cd Project_Todolist
 
 | No | Tugas | PIC | Status | Issue # |
 | --- | --- | --- | --- | --- |
-| 1 | Membuat tampilan aplikasi To-Do List | Hanaya (Front-End) | In Progress | #1 |
-| 2 | Membuat fungsi CRUD To-Do List | Rayzan (Back-End) | In Progress | #2 |
+| 1 | Membuat tampilan aplikasi To-Do List | Hanaya (Front-End) | done | #1 |
+| 2 | Membuat fungsi CRUD To-Do List | Rayzan (Back-End) | done | #2 |
 | 3 | Menyusun dokumentasi (README.md) | Faras (UI/UX & Dokumentasi) | Done | #3 |
-| 4 | Menguji aplikasi To-Do List | Faras (QA) | To Do | #4 |
+| 4 | Menguji aplikasi To-Do List | Aditya (QA) | To Do | #4 |
 
 > Status: **To Do** (belum dikerjakan), **In Progress** (sedang dikerjakan), **Review** (menunggu PR di-review), **Done** (selesai & sudah di-merge).
 
